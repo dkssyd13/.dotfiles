@@ -84,3 +84,6 @@ nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 " Make current file executable
 nnoremap <leader>x :!chmod +x %<CR>
+
+set scrolloff=8
+set signcolumn=yes

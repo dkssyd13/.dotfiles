@@ -20,3 +20,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.keymap.set("n", "<leader>f", function()
 	require("conform").format({ bufnr = 0 })
 end)
+
+-- 창 너비 줄이기: Ctrl + Alt + Left
+vim.keymap.set("n", "<C-M-Right>", "<Cmd>vertical resize -5<CR>", { desc = "창 너비 줄이기" })
+
+-- 창 너비 늘리기: Ctrl + Alt + Right
+vim.keymap.set("n", "<C-M-Left>", "<Cmd>vertical resize +5<CR>", { desc = "창 너비 늘리기" })
