@@ -26,3 +26,9 @@ map <C-h> <Action>(Tree-selectParent)
 map <C-l> <Action>(Tree-selectChild)
 map <C-k> <Action>(Tree-selectPrevious)
 map <C-j> <Action>(Tree-selectNext)
+
+if has('ide')
+    if &ide =~? 'pycharm'
+        set scrolloff=0
+    endif
+endif
