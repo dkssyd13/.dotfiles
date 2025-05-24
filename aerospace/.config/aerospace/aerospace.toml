@@ -22,16 +22,15 @@ default-root-container-orientation = 'auto'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 after-startup-command = [
-    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0'
+    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 blacklist="iPhone Mirroring"'
 ]
 
 [mode.main.binding]
 
-    # i3 wraps focus by default
-    alt-h =         'focus --boundaries-action wrap-around-the-workspace left'
-    alt-j =         'focus --boundaries-action wrap-around-the-workspace down'
-    alt-k =         'focus --boundaries-action wrap-around-the-workspace up'
-    alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
+    alt-h = 'focus left'
+    alt-j = 'focus down'
+    alt-k = 'focus up'
+    alt-l = 'focus right'
 
     alt-shift-h = 'move left'
     alt-shift-j = 'move down'
@@ -91,6 +90,8 @@ after-startup-command = [
     c = ['exec-and-forget open -a "Cursor.app"', 'mode main']
     p = ['exec-and-forget open -a "PyCharm.app"', 'mode main']
     v = ['exec-and-forget open -a "Visual Studio Code.app"', 'mode main']
+    f = ['exec-and-forget open -a "Finder"', 'mode main']
+    b = ['exec-and-forget open "https://www.google.com"', 'mode main']
 
     esc = 'mode main'
 

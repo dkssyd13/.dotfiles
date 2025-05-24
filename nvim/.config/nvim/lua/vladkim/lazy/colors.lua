@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-	color = color or "gruvbox-material"
+	color = color or "jb"
 	vim.cmd.colorscheme(color)
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -28,19 +28,6 @@ return {
 	},
 
 	{
-		"rebelot/kanagawa.nvim",
-		config = function()
-			require("kanagawa").setup({
-				disable_background = true,
-				styles = {
-					italic = false,
-				},
-				theme = "lotus",
-			})
-		end,
-	},
-
-	{
 		"sainnhe/gruvbox-material",
         priority = 1000,
         lazy = false,
@@ -50,7 +37,16 @@ return {
 			vim.g.gruvbox_material_enable_italic = 0
 			vim.g.gruvbox_material_disable_italic_comment = 1
             vim.g.gruvbox_material_transparent_background = 1
-			ColorMyPencils()
 		end,
 	},
+
+    {
+        "nickkadutskyi/jb.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+        config = function()
+            ColorMyPencils()
+        end,
+    },
 }

@@ -11,14 +11,14 @@ return {
     },
     lazy = false,
     keys = {
-        { '\\', ':Neotree reveal<CR>',mode = 'n', desc = 'NeoTree reveal', silent = true },
+        { "<leader>\\", "<cmd>Neotree toggle<CR>", mode = "n", desc = "NeoTree toggle", silent = true },
     },
     opts = {
         filesystem = {
             window = {
                 width = 30,
                 mappings = {
-                    ['\\'] = 'close_window',
+                    ['<leader>\\'] = 'close_window',
                     ['<esc>'] = function(state)
                         vim.cmd('wincmd p')  -- 이전 창으로 포커스 이동
                     end,

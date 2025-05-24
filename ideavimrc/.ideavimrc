@@ -1,19 +1,33 @@
 source ~/.vimrc
 
-Plug 'machakann/vim-highlightedyank'
+set ideajoin
+set idearefactormode=keep
+
+""" Plugins
+set NERDTree
+set highlightedyank
+set which-key
+"""
+
+""" Plugin Settings
+set notimeout
 let g:highlightedyank_highlight_duration = "40"
 let g:highlightedyank_highlight_color = "rgba(255, 107, 0, 255)"
+"""
 
-set which-key
-set notimeout
+""" Bindings
+nmap <leader>\ :NERDTreeToggle<CR>
 
 map <leader>ml <Action>(EditorToggleColumnMode)
+
 map <C-j> <Action>(EditorDownWithSelection)
 map <C-k> <Action>(EditorUpWithSelection)
 
 map <leader>pf <Action>(GotoFile)
+map <leader>ps <Action>(FindInPath)
 
 map <leader>rn <Action>(RenameElement)
+map <leader>in <Action>(Inline)
 
 map <leader>nv <Action>(IntroduceVariable)
 map <leader>nc <Action>(IntroduceConstant)
@@ -21,11 +35,7 @@ map <leader>nm <Action>(ExtractMethod)
 
 map [d <Action>(GotoNextError)
 map ]d <Action>(GotoPreviousError)
-
-map <C-h> <Action>(Tree-selectParent)
-map <C-l> <Action>(Tree-selectChild)
-map <C-k> <Action>(Tree-selectPrevious)
-map <C-j> <Action>(Tree-selectNext)
+"""
 
 if has('ide')
     if &ide =~? 'pycharm'
