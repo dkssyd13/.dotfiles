@@ -27,10 +27,10 @@ after-startup-command = [
 
 [mode.main.binding]
 
-    alt-h = 'focus left'
-    alt-j = 'focus down'
-    alt-k = 'focus up'
-    alt-l = 'focus right'
+    alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
+    alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
+    alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
+    alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
 
     alt-shift-h = 'move left'
     alt-shift-j = 'move down'
@@ -92,6 +92,7 @@ after-startup-command = [
     v = ['exec-and-forget open -a "Visual Studio Code.app"', 'mode main']
     f = ['exec-and-forget open -a "Finder"', 'mode main']
     b = ['exec-and-forget open "https://www.google.com"', 'mode main']
+    t = ['exec-and-forget open -a "iTerm.app"', 'mode main']
 
     esc = 'mode main'
 
@@ -148,9 +149,9 @@ run = 'move-node-to-workspace 2'
 if.app-id = 'com.microsoft.VSCode'
 run = 'move-node-to-workspace 2'
 
-# Goodnotes to workspace 3
+# Terminal to workspace 3
 [[on-window-detected]]
-if.app-id = 'com.goodnotesapp.x'
+if.app-id = 'com.googlecode.iterm2'
 run = 'move-node-to-workspace 3'
 
 # Messangers to workspace 5
@@ -171,7 +172,7 @@ run = ['layout floating', 'move-node-to-workspace 5']
 if.app-id = 'com.apple.finder'
 run = 'move-node-to-workspace 9'
 
-# Terminal to workspace 10
+# Goodnotes to workspace 10
 [[on-window-detected]]
-if.app-id = 'com.googlecode.iterm2'
+if.app-id = 'com.goodnotesapp.x'
 run = 'move-node-to-workspace 10'

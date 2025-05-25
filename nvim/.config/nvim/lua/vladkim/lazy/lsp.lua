@@ -44,11 +44,6 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "pyright",
-                "cssls",
-                "html",
-                "gradle_ls",
-                "jsonls",
-                "yamlls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -57,22 +52,6 @@ return {
                     }
                 end,
 
-                zls = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.zls.setup({
-                        root_dir = lspconfig.util.root_pattern(".git", "build.zig", "zls.json"),
-                        settings = {
-                            zls = {
-                                enable_inlay_hints = true,
-                                enable_snippets = true,
-                                warn_style = true,
-                            },
-                        },
-                    })
-                    vim.g.zig_fmt_parse_errors = 0
-                    vim.g.zig_fmt_autosave = 0
-
-                end,
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {
@@ -91,6 +70,23 @@ return {
                             }
                         }
                     }
+                end,
+
+                ["pyright"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.pyright.setup({
+                        capabilities = capabilities,
+                        settings = {
+                            python = {
+                                analysis = {
+                                    typeCheckingMode = "basic", -- or "strict"
+                                    autoSearchPaths = true,
+                                    useLibraryCodeForTypes = true,
+                                    diagnosticMode = "workspace", -- or "openFilesOnly"
+                                }
+                            }
+                        }
+                    })
                 end,
             }
         })

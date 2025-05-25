@@ -26,6 +26,9 @@ map <C-k> <Action>(EditorUpWithSelection)
 map <leader>pf <Action>(GotoFile)
 map <leader>ps <Action>(FindInPath)
 
+map <leader>gi <Action>(GotoImplementation)
+
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
 map <leader>rn <Action>(RenameElement)
 map <leader>in <Action>(Inline)
 
