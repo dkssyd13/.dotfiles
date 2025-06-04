@@ -16,17 +16,54 @@ let g:highlightedyank_highlight_color = "rgba(255, 107, 0, 255)"
 """
 
 """ Bindings
-nmap <leader>\ :NERDTreeToggle<CR>
+nmap <c-h> <c-w>h
+nmap <c-j> <c-w>j
+nmap <c-k> <c-w>k
+nmap <c-l> <c-w>l
 
+"Harpoon"
+nmap <leader>H <Action>(ShowHarpoon)
+nmap <leader>h1 <Action>(SetHarpoon1)
+nmap <leader>h2 <Action>(SetHarpoon2)
+nmap <leader>h3 <Action>(SetHarpoon3)
+nmap <leader>h4 <Action>(SetHarpoon4)
+nmap <leader>h5 <Action>(SetHarpoon5)
+nmap <leader>1 <Action>(GotoHarpoon1)
+nmap <leader>2 <Action>(GotoHarpoon2)
+nmap <leader>3 <Action>(GotoHarpoon3)
+nmap <leader>4 <Action>(GotoHarpoon4)
+nmap <leader>5 <Action>(GotoHarpoon5)
+"NerdTree"
+nmap <leader>e :NERDTreeFind<CR>
+
+"Run/Debug"
+nmap <leader>cr <Action>(RunMenu)
+nmap <leader>cd <Action>(Debug)
+nmap <leader>b <Action>(ToggleLineBreakpoint)
+
+"Tabs"
+nmap H <Action>(PreviousTab)
+nmap L <Action>(NextTab)
+
+"Windows"
+nmap <leader>td <Action>(ActivateTODOToolWindow)
+
+
+"Intellij"
 map <leader>ml <Action>(EditorToggleColumnMode)
+
+map <leader>ac <Action>(ShowIntentionActions)
 
 map <C-j> <Action>(EditorDownWithSelection)
 map <C-k> <Action>(EditorUpWithSelection)
 
-map <leader>pf <Action>(GotoFile)
-map <leader>ps <Action>(FindInPath)
+" find
+nmap <leader><Space> <Action>(GotoFile)
+map <leader>fp <Action>(GotoFile)
+map <leader>fc <Action>(GotoClass)
+map <leader>fs <Action>(FindInPath)
 
-map <leader>gi <Action>(GotoImplementation)
+map gi <Action>(GotoImplementation)
 
 map <leader>rr <Action>(Refactorings.QuickListPopupAction)
 map <leader>rn <Action>(RenameElement)
