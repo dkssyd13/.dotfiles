@@ -22,8 +22,16 @@ default-root-container-orientation = 'auto'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 after-startup-command = [
-    'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 blacklist="iPhone Mirroring"'
+    'exec-and-forget borders active_color=0xffff6b00 inactive_color=0xff494d64 width=5.0 blacklist="iPhone Mirroring"'
 ]
+
+[gaps]
+inner.horizontal = 15
+inner.vertical =   15
+outer.left =       15
+outer.bottom =     15
+outer.top =        15
+outer.right =      15
 
 [mode.main.binding]
 
@@ -93,6 +101,7 @@ after-startup-command = [
     f = ['exec-and-forget open -a "Finder"', 'mode main']
     b = ['exec-and-forget open "https://www.google.com"', 'mode main']
     t = ['exec-and-forget open -a "iTerm.app"', 'mode main']
+    n = ['exec-and-forget open -a "Notion.app"', 'mode main']
 
     esc = 'mode main'
 
@@ -169,12 +178,7 @@ run = ['layout floating', 'move-node-to-workspace 5']
 if.app-id = 'com.apple.ScreenContinuity'
 run = ['layout floating', 'move-node-to-workspace 5']
 
-# Finder to workspace 9
+# Finder to workspace 10
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
-run = 'move-node-to-workspace 9'
-
-# Goodnotes to workspace 10
-[[on-window-detected]]
-if.app-id = 'com.goodnotesapp.x'
 run = 'move-node-to-workspace 10'

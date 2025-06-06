@@ -2,6 +2,7 @@ source ~/.vimrc
 
 set ideajoin
 set idearefactormode=keep
+set keep-english-in-normal
 
 """ Plugins
 set NERDTree

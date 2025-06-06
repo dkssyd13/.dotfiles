@@ -1,5 +1,5 @@
 require("vladkim.set")
-
+require("vladkim.remap")
 require("vladkim.lazy_init")
 
 local augroup = vim.api.nvim_create_augroup
