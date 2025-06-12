@@ -21,17 +21,19 @@ default-root-container-orientation = 'auto'
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
+on-focus-changed = ['move-mouse window-lazy-center']
+
 after-startup-command = [
     'exec-and-forget borders active_color=0xffff6b00 inactive_color=0xff494d64 width=5.0 blacklist="iPhone Mirroring"'
 ]
 
 [gaps]
-inner.horizontal = 15
-inner.vertical =   15
-outer.left =       15
-outer.bottom =     15
-outer.top =        15
-outer.right =      15
+inner.horizontal = 10
+inner.vertical =   10
+outer.left =       10
+outer.bottom =     10
+outer.top =        10
+outer.right =      10
 
 [mode.main.binding]
 
@@ -91,7 +93,7 @@ outer.right =      15
     alt-shift-o = 'mode open'
 
 [workspace-to-monitor-force-assignment]
-    6 = ['secondary', 'main']
+    1 = ['secondary', 'main']
 
 [mode.open.binding]
     i = ['exec-and-forget open -a "IntelliJ IDEA"', 'mode main']
@@ -100,7 +102,7 @@ outer.right =      15
     v = ['exec-and-forget open -a "Visual Studio Code.app"', 'mode main']
     f = ['exec-and-forget open -a "Finder"', 'mode main']
     b = ['exec-and-forget open "https://www.google.com"', 'mode main']
-    t = ['exec-and-forget open -a "iTerm.app"', 'mode main']
+    t = ['exec-and-forget open -a "Ghostty.app"', 'mode main']
     n = ['exec-and-forget open -a "Notion.app"', 'mode main']
 
     esc = 'mode main'
@@ -111,7 +113,7 @@ outer.right =      15
     k = 'resize height -50'
     l = 'resize width -50'
 
-    b = ['exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 blacklist="iPhone Mirroring"', 'mode main']
+    b = ['exec-and-forget borders active_color=0xffff6b00 inactive_color=0xff494d64 width=5.0 blacklist="iPhone Mirroring"', 'mode main']
 
     r = ['flatten-workspace-tree', 'mode main'] # reset layout
     backspace = ['close-all-windows-but-current', 'mode main']
@@ -126,17 +128,13 @@ outer.right =      15
 
 
 
-# Chrome, Notion, ChatGPT to workspace 1
+# Chrome, Notion to workspace 1
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
 if.app-id = 'notion.id'
-run = 'move-node-to-workspace 1'
-
-[[on-window-detected]]
-if.app-id = 'com.openai.chat'
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
@@ -164,6 +162,9 @@ run = 'move-node-to-workspace 2'
 [[on-window-detected]]
 if.app-id = 'com.googlecode.iterm2'
 run = 'move-node-to-workspace 3'
+[[on-window-detected]]
+if.app-id =  'com.mitchellh.ghostty'
+run = 'move-node-to-workspace 3'
 
 # Messangers to workspace 5
 [[on-window-detected]]
@@ -178,7 +179,7 @@ run = ['layout floating', 'move-node-to-workspace 5']
 if.app-id = 'com.apple.ScreenContinuity'
 run = ['layout floating', 'move-node-to-workspace 5']
 
-# Finder to workspace 10
+# Finder to workspace 4
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
-run = 'move-node-to-workspace 10'
+run = 'move-node-to-workspace 4'

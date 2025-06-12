@@ -62,7 +62,7 @@ map <C-k> <Action>(EditorUpWithSelection)
 nmap <leader><Space> <Action>(GotoFile)
 map <leader>fp <Action>(GotoFile)
 map <leader>fc <Action>(GotoClass)
-map <leader>fs <Action>(FindInPath)
+map <leader>ff <Action>(FindInPath)
 
 map gi <Action>(GotoImplementation)
 

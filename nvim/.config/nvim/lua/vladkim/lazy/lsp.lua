@@ -43,7 +43,7 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "pyright",
+                "basedpyright",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -72,9 +72,9 @@ return {
                     }
                 end,
 
-                ["pyright"] = function()
+                ["basedpyright"] = function()
                     local lspconfig = require("lspconfig")
-                    lspconfig.pyright.setup({
+                    lspconfig.basedpyright.setup({
                         capabilities = capabilities,
                         settings = {
                             python = {
