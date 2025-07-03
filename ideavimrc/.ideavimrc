@@ -1,4 +1,5 @@
 source ~/.vimrc
+nunmap <Esc>
 
 set ideajoin
 set idearefactormode=keep
@@ -77,9 +78,3 @@ map <leader>nm <Action>(ExtractMethod)
 map [d <Action>(GotoNextError)
 map ]d <Action>(GotoPreviousError)
 """
-
-if has('ide')
-    if &ide =~? 'pycharm'
-        set scrolloff=0
-    endif
-endif

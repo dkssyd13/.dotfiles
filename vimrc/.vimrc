@@ -2,9 +2,6 @@ set relativenumber
 set tabstop=4
 set ts=4
 
-set fileencoding=utf-8
-language en_US.UTF-8
-
 " Highlight relative numbers
 highlight LineNrAbove ctermfg=208 guifg=orange
 highlight LineNrBelow ctermfg=208 guifg=orange
