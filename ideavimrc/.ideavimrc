@@ -1,9 +1,15 @@
 source ~/.vimrc
 nunmap <Esc>
 
+if has('pycharm')
+    " PyCharm 전용 설정
+    set scrolloff=0
+endif
+
 set ideajoin
 set idearefactormode=keep
 set keep-english-in-normal
+set surround
 
 """ Plugins
 set NERDTree
@@ -39,7 +45,7 @@ nmap <leader>5 <Action>(GotoHarpoon5)
 nmap <leader>e :NERDTreeFind<CR>
 
 "Run/Debug"
-nmap <leader>cr <Action>(RunMenu)
+nmap <leader>cr <Action>(ChooseRunConfiguration)
 nmap <leader>cd <Action>(Debug)
 nmap <leader>b <Action>(ToggleLineBreakpoint)
 
@@ -78,3 +84,16 @@ map <leader>nm <Action>(ExtractMethod)
 map [d <Action>(GotoNextError)
 map ]d <Action>(GotoPreviousError)
 """
+
+"surround"
+nmap <leader>" ysiw"
+nmap <leader>' ysiw'
+nmap <leader>( ysiw)
+nmap <leader>{ ysiw}
+nmap <leader>[ ysiw]
+
+vmap <leader>" S"
+vmap <leader>' S'
+vmap <leader>( S)
+vmap <leader>{ S}
+vmap <leader>[ S]
