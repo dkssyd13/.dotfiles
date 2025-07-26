@@ -46,12 +46,7 @@ return {
                 function()
                     local harpoon = require("harpoon")
                     local list = harpoon:list()
-                    if list.items[i] ~= nil then
-                        list:replace_at(i)
-                        print("Replaced Harpoon mark at " .. i)
-                    else
-                        print("Harpoon mark " .. i .. " doesn't exist. Use :lua require('harpoon'):list():append() first.")
-                    end
+                    list:replace_at(i)
                 end,
                 desc = "Harpoon: Replace file at slot " .. i,
             })
