@@ -85,3 +85,4 @@ nnoremap <leader>x :!chmod +x %<CR>
 set scrolloff=8
 set signcolumn=yes
 set incsearch
+set colorcolumn=80
