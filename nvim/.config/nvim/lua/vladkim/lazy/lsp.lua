@@ -13,8 +13,19 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
         "stevearc/conform.nvim",
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
+        {
+            "williamboman/mason.nvim",
+            opts = {}
+        },
+        {
+            "williamboman/mason-lspconfig.nvim",
+            opts = {
+                ensure_installed = {
+                    "lua_ls",
+                    "basedpyright",
+                }
+            }
+        },
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
@@ -28,9 +39,13 @@ return {
     config = function()
         require("conform").setup({
             formatters_by_ft = {
+                lua = { "stylua" },
+                python = { "black", "isort" },
             }
         })
-        local cmp = require('cmp')
+
+        require("fidget").setup({})
+
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
             "force",
@@ -38,59 +53,43 @@ return {
             vim.lsp.protocol.make_client_capabilities(),
             cmp_lsp.default_capabilities())
 
-        require("fidget").setup({})
-        require("mason").setup()
-        require("mason-lspconfig").setup({
-            ensure_installed = {
-                "lua_ls",
-                "basedpyright",
-            },
-            handlers = {
-                function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {
-                        capabilities = capabilities
-                    }
-                end,
-
-                ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup {
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                format = {
-                                    enable = true,
-                                    -- Put format options here
-                                    -- NOTE: the value should be STRING!!
-                                    defaultConfig = {
-                                        indent_style = "space",
-                                        indent_size = "2",
-                                    }
-                                },
-                            }
+        vim.lsp.config('lua_ls', {
+            capabilities = capabilities,
+            settings = {
+                Lua = {
+                    format = {
+                        enable = true,
+                        -- NOTE: the value should be STRING!!
+                        defaultConfig = {
+                            indent_style = "space",
+                            indent_size = "2",
                         }
-                    }
-                end,
-
-                ["basedpyright"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.basedpyright.setup({
-                        capabilities = capabilities,
-                        settings = {
-                            python = {
-                                analysis = {
-                                    typeCheckingMode = "basic", -- or "strict"
-                                    autoSearchPaths = true,
-                                    useLibraryCodeForTypes = true,
-                                    diagnosticMode = "workspace", -- or "openFilesOnly"
-                                }
-                            }
-                        }
-                    })
-                end,
+                    },
+                }
             }
         })
 
+        vim.lsp.config('basedpyright', {
+            capabilities = capabilities,
+            settings = {
+                basedpyright = {
+                    analysis = {
+                        typeCheckingMode = "basic",
+                        autoSearchPaths = true,
+                        useLibraryCodeForTypes = true,
+                        diagnosticMode = "workspace",
+                        diagnosticSeverityOverrides = {
+                            reportAny = "none",
+                            reportUnknownParameterType = "none",
+                            reportMissingParameterType = "none",
+                            -- 필요시 예: reportUnusedImport = "warning",
+                        },
+                    }
+                }
+            }
+        })
+
+        local cmp = require('cmp')
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
         cmp.setup({
@@ -124,6 +123,22 @@ return {
                 header = "",
                 prefix = "",
             },
+        })
+
+        vim.api.nvim_create_autocmd('LspAttach', {
+            group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+            callback = function(ev)
+                local opts = { buffer = ev.buf, silent = true }
+
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
+                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+                vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+            end,
         })
     end
 }
