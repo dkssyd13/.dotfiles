@@ -7,6 +7,7 @@ local root_files = {
   'selene.toml',
   'selene.yml',
   '.git',
+  'pyproject.toml',
 }
 
 return {
@@ -23,6 +24,7 @@ return {
                 ensure_installed = {
                     "lua_ls",
                     "basedpyright",
+                    "ruff"
                 }
             }
         },
@@ -40,7 +42,11 @@ return {
         require("conform").setup({
             formatters_by_ft = {
                 lua = { "stylua" },
-                python = { "black", "isort" },
+                python = {
+                    "ruff_fix",
+                    "ruff_format",
+                    "ruff_organize_imports",
+                },
             }
         })
 
@@ -78,6 +84,7 @@ return {
                         autoSearchPaths = true,
                         useLibraryCodeForTypes = true,
                         diagnosticMode = "workspace",
+                        autoImportCompletions = true,
                         diagnosticSeverityOverrides = {
                             reportAny = "none",
                             reportUnknownParameterType = "none",
@@ -87,6 +94,20 @@ return {
                     }
                 }
             }
+        })
+
+        vim.lsp.config('ruff', {
+            capabilities = capabilities,
+            init_options = {
+                settings = { },
+            },
+            on_attach = function(client, bufnr)
+                -- Hover 등은 basedpyright에 맡김
+                client.server_capabilities.hoverProvider = false
+                -- 포맷은 conform.nvim이 담당하므로 LSP 포맷 비활성화
+                client.server_capabilities.documentFormattingProvider = false
+                client.server_capabilities.documentRangeFormattingProvider = false
+            end,
         })
 
         local cmp = require('cmp')
