@@ -88,7 +88,6 @@ outer.right =      10
     alt-shift-0 = 'move-node-to-workspace 10'
 
     alt-shift-s = 'mode settings'
-    alt-shift-o = 'mode open'
 
     alt-shift-enter = ['exec-and-forget open -a "Ghostty.app"']
     alt-shift-i = ['exec-and-forget open -a "IntelliJ IDEA"', 'mode main']
