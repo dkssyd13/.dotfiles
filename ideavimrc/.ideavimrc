@@ -1,9 +1,12 @@
 source ~/.vimrc
 nunmap <Esc>
 
-if has('pycharm')
-    " PyCharm 전용 설정
-    set scrolloff=0
+" IdeaVim 전용 설정
+if has('ide')
+    if &ide =~? 'pycharm'
+        " PyCharm에서만 scrolloff=0 (Jupyter screen jump 방지)
+        set scrolloff=0
+    endif
 endif
 
 set ideajoin
