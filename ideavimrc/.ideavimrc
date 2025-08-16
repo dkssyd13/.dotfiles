@@ -80,6 +80,7 @@ map <leader>rr <Action>(Refactorings.QuickListPopupAction)
 map <leader>rn <Action>(RenameElement)
 map <leader>in <Action>(Inline)
 
+map <leader>ca <Action>(ShowIntentionActions)
 map <leader>nv <Action>(IntroduceVariable)
 map <leader>nc <Action>(IntroduceConstant)
 map <leader>nm <Action>(ExtractMethod)
