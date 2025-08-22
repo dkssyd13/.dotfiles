@@ -91,7 +91,8 @@ outer.right =      10
 
     alt-shift-enter = ['exec-and-forget open -a "Ghostty.app"']
     alt-shift-i = ['exec-and-forget open -a "IntelliJ IDEA"', 'mode main']
-    alt-shift-c = ['exec-and-forget open -a "Visual Studio Code.app"', 'mode main']
+    alt-shift-c = ['exec-and-forget open -a "Cursor.app"', 'mode main']
+    alt-shift-v = ['exec-and-forget open -a "Visual Studio Code.app"', 'mode main']
     alt-shift-p = ['exec-and-forget open -a "PyCharm.app"', 'mode main']
     alt-shift-f = ['exec-and-forget open -a "Finder"', 'mode main']
     alt-shift-b = ['exec-and-forget open -a "Zen.app"', 'mode main']

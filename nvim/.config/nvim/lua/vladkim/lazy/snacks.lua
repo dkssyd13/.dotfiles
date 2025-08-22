@@ -14,7 +14,36 @@ return {
 			enabled = true,
 			timeout = 3000,
 		},
-		picker = { enabled = true },
+		-- picker = { enabled = true },
+        picker = {
+            enabled = true,
+            sources = {
+                explorer = {
+                    layout = {
+                        layout = {
+                            width = 25,        -- 너비만 조정
+                        },
+                    },
+                    auto_close = false,
+                    focus = "list",
+                    tree = true,
+                    follow_file = true,
+                    win = {
+                        list = {
+                            keys = {
+                                ["<Esc>"] = {
+                                    function()
+                                        -- 메인 버퍼로 포커스 이동 (explorer는 열어둠)
+                                        vim.cmd("wincmd p")
+                                    end,
+                                    mode = "n"
+                                },
+                            },
+                        }
+                    }
+                }
+            }
+        },
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = false },
@@ -484,6 +513,24 @@ return {
 			mode = { "n", "t" },
 		},
 	},
+    config = function(_, opts)
+        require("snacks").setup(opts)
+
+        -- 메인 버퍼에서 Esc로 explorer 닫기
+        vim.keymap.set("n", "<Esc>", function()
+            local explorers = Snacks.picker.get({ source = "explorer" })
+
+            if #explorers > 0 then
+                for _, picker in ipairs(explorers) do
+                    picker:close()
+                end
+            else
+                vim.cmd("nohlsearch")
+            end
+        end, { desc = "Close explorer or clear highlights" })
+    end,
+
+
 	init = function()
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "VeryLazy",

@@ -7,6 +7,7 @@ function ColorMyPencils(color)
 	-- Set relative line number colors to orange
 	vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#FF6B00" })
 	vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#FF6B00" })
+    -- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 end
 
 return {
@@ -46,7 +47,16 @@ return {
         priority = 1000,
         opts = {},
         config = function()
-            ColorMyPencils()
+            -- ColorMyPencils()
         end,
     },
+
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        config = function()
+            ColorMyPencils("catppuccin-macchiato")
+        end
+    }
 }
