@@ -58,8 +58,7 @@ nmap L <Action>(NextTab)
 
 "Windows"
 nmap <leader>td <Action>(ActivateTODOToolWindow)
-nmap <Esc> <Action>(HideAllWindows)
-
+nmap <Esc> <Action>(HideSideWindows)
 
 "Intellij"
 map <leader>ml <Action>(EditorToggleColumnMode)
