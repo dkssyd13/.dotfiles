@@ -58,6 +58,7 @@ nmap L <Action>(NextTab)
 
 "Windows"
 nmap <leader>td <Action>(ActivateTODOToolWindow)
+nmap <Esc> <Action>(HideAllWindows)
 
 
 "Intellij"
