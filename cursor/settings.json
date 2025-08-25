@@ -1,0 +1,617 @@
+{
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.editor.showTabs": "single",
+    "code-runner.runInTerminal": true,
+    "remote.SSH.remotePlatform": {
+        "home": "linux"
+    },
+    "terminal.integrated.inheritEnv": false,
+    "editor.mouseWheelZoom": true,
+    "editor.lineNumbers": "relative",
+    "vim.vimrc.path": "$HOME/.vimrc",
+    "vim.vimrc.enable": true,
+    "vim.incsearch": true,
+    "vim.leader": "<space>",
+    "workbench.colorCustomizations": {
+        "editorLineNumber.foreground": "#FF6B00"
+    },
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-r>": true,
+        "<C-s>": false,
+        "<C-z>": false,
+        "<C-w>": false,
+        "<C-v>": false,
+        "<C-p>": false,
+        "<C-j>": false
+    },
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "\""
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "\"${TM_SELECTED_TEXT}\""
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "'"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "'${TM_SELECTED_TEXT}'"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "("
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "(${TM_SELECTED_TEXT})"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                ")"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "(${TM_SELECTED_TEXT})"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "["
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "[${TM_SELECTED_TEXT}]"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "]"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "[${TM_SELECTED_TEXT}]"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "n",
+                "m"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.codeAction",
+                    "args": {
+                        "kind": "refactor.extract.method"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c",
+                "a"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "w",
+                "\""
+            ],
+            "commands": [
+                "editor.action.addSelectionToNextFindMatch",
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "\"${TM_SELECTED_TEXT}\""
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w",
+                "'"
+            ],
+            "commands": [
+                "editor.action.addSelectionToNextFindMatch",
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "'${TM_SELECTED_TEXT}'"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w",
+                "("
+            ],
+            "commands": [
+                "editor.action.addSelectionToNextFindMatch",
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "(${TM_SELECTED_TEXT})"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w",
+                ")"
+            ],
+            "commands": [
+                "editor.action.addSelectionToNextFindMatch",
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "(${TM_SELECTED_TEXT})"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w",
+                "["
+            ],
+            "commands": [
+                "editor.action.addSelectionToNextFindMatch",
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "[${TM_SELECTED_TEXT}]"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "w",
+                "]"
+            ],
+            "commands": [
+                "editor.action.addSelectionToNextFindMatch",
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "[${TM_SELECTED_TEXT}]"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "W",
+                "\""
+            ],
+            "commands": [
+                "editor.action.smartSelect.grow",
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "\"${TM_SELECTED_TEXT}\""
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "W",
+                "'"
+            ],
+            "commands": [
+                "editor.action.smartSelect.grow",
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "'${TM_SELECTED_TEXT}'"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "W",
+                "("
+            ],
+            "commands": [
+                "editor.action.smartSelect.grow",
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "(${TM_SELECTED_TEXT})"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "W",
+                ")"
+            ],
+            "commands": [
+                "editor.action.smartSelect.grow",
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "(${TM_SELECTED_TEXT})"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "W",
+                "["
+            ],
+            "commands": [
+                "editor.action.smartSelect.grow",
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "[${TM_SELECTED_TEXT}]"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "W",
+                "]"
+            ],
+            "commands": [
+                "editor.action.smartSelect.grow",
+                {
+                    "command": "editor.action.insertSnippet",
+                    "args": {
+                        "snippet": "[${TM_SELECTED_TEXT}]"
+                    }
+                }
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c",
+                "a"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        {
+            "before": [
+                "<Esc>"
+            ],
+            "commands": [
+                "workbench.action.closeSidebar"
+            ],
+            "when": "editorTextFocus && sideBarVisible"
+        },
+        {
+            "before": [
+                "<leader>",
+                "c",
+                "r"
+            ],
+            "commands": [
+                "workbench.action.debug.run"
+            ]
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "editor.debug.action.showDebugHover"
+            ],
+            "when": "editorTextFocus && inDebugMode"
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ],
+            "when": "editorTextFocus"
+        },
+        {
+            "before": [
+                "<leader>",
+                "H"
+            ],
+            "commands": [
+                "vscode-harpoon.editorQuickPick"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "1"
+            ],
+            "commands": [
+                "vscode-harpoon.gotoEditor1"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "2"
+            ],
+            "commands": [
+                "vscode-harpoon.gotoEditor2"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "3"
+            ],
+            "commands": [
+                "vscode-harpoon.gotoEditor3"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "4"
+            ],
+            "commands": [
+                "vscode-harpoon.gotoEditor4"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "5"
+            ],
+            "commands": [
+                "vscode-harpoon.gotoEditor5"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "h",
+                "1"
+            ],
+            "commands": [
+                "vscode-harpoon.addEditor1"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "h",
+                "2"
+            ],
+            "commands": [
+                "vscode-harpoon.addEditor2"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "h",
+                "3"
+            ],
+            "commands": [
+                "vscode-harpoon.addEditor3"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "h",
+                "4"
+            ],
+            "commands": [
+                "vscode-harpoon.addEditor4"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "h",
+                "5"
+            ],
+            "commands": [
+                "vscode-harpoon.addEditor5"
+            ]
+        },
+        {
+            "before": [
+                "<C-h>"
+            ],
+            "commands": [
+                "workbench.action.focusLeftGroup"
+            ]
+        },
+        {
+            "before": [
+                "<C-j>"
+            ],
+            "commands": [
+                "workbench.action.focusBelowGroup"
+            ]
+        },
+        {
+            "before": [
+                "<C-k>"
+            ],
+            "commands": [
+                "workbench.action.focusAboveGroup"
+            ]
+        },
+        {
+            "before": [
+                "<C-l>"
+            ],
+            "commands": [
+                "workbench.action.focusRightGroup"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "e"
+            ],
+            "commands": [
+                "workbench.files.action.showActiveFileInExplorer"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "<space>"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "td"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "c"
+            ],
+            "commands": [
+                "workbench.action.gotoSymbol"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.findInFiles"
+            ]
+        },
+        {
+            "before": [
+                "[",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [
+                "]",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.prev"
+            ]
+        }
+    ],
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.color": "#FF6B00",
+    "vim.highlightedyank.duration": 40,
+    "editor.cursorStyle": "block",
+    "python.analysis.typeCheckingMode": "standard",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "editor.minimap.enabled": false,
+    "editor.wordWrap": "off",
+    "accessibility.signalOptions.volume": 0,
+    "editor.fontSize": 15,
+    "window.titleBarStyle": "custom",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "window.menuBarVisibility": "compact",
+    "cursor.cpp.disabledLanguages": [
+        "plaintext",
+        "markdown",
+        "scminput"
+    ],
+    "editor.accessibilitySupport": "off",
+    "explorer.compactFolders": false,
+    "workbench.colorTheme": "Catppuccin Macchiato",
+    "catppuccin.italicKeywords": false,
+    "workbench.layoutControl.enabled": false,
+}
