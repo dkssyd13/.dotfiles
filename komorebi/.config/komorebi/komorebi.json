@@ -1,0 +1,124 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.37/schema.json",
+  "app_specific_configuration_path": "$Env:KOMOREBI_CONFIG_HOME/applications.json",
+  "window_hiding_behaviour": "Cloak",
+  "cross_monitor_move_behaviour": "Insert",
+  "default_workspace_padding": 0,
+  "default_container_padding": 5,
+  "border": true,
+  "border_width": 5,
+  "border_colours": {
+    "single": "#FF6B00",
+    "stack": "#FF6B00",
+    "monocle": "#FF6B00",
+    "unfocused": "#404040"
+  },
+  "transparency": true,
+  "transparency_alpha": 220,
+  "manage_rules": [
+    {
+      "kind": "Exe",
+      "id": "claude.exe",
+      "matching_strategy": "Equals"
+    }
+  ],
+  "monitors": [
+    {
+      "workspaces": [
+        {
+          "name": "1",
+          "layout": "Columns",
+          "workspace_rules": [
+            {
+              "kind": "Exe",
+              "id": "zen.exe",
+              "matching_strategy": "Equals"
+            }
+            ]
+        },
+
+        {
+          "name": "2",
+          "layout": "Columns",
+          "workspace_rules": [
+            {
+                "kind": "Exe",
+                "id": "Code.exe"
+            },
+            {
+                "kind": "Exe",
+                "id": "pycharm64.exe"
+            },
+            {
+                "kind": "Exe",
+                "id": "Cursor.exe"
+            },
+            ]
+        },
+        {
+          "name": "3",
+          "layout": "Columns",
+          "workspace_rules": [
+            {
+                "kind": "Exe",
+                "id": "claude.exe"
+            }
+            ]
+        },
+        {
+          "name": "4",
+          "layout": "Columns",
+          "workspace_rules": [
+            {
+                "kind": "Exe",
+                "id": "WindowsTerminal.exe"
+            },
+            {
+                "kind": "Exe",
+                "id": "alacritty.exe"
+            }
+
+            ]
+        },
+        {
+          "name": "5",
+          "layout": "Columns",
+          "workspace_rules": [
+            {
+                "kind": "Exe",
+                "id": "Notion.exe"
+            }
+          ]
+        },
+        {
+          "name": "6",
+          "layout": "Columns",
+          "workspace_rules": [
+            {
+                "kind": "Exe",
+                "id": "explorer.exe"
+            }
+            ]
+        },
+        {
+          "name": "7",
+          "layout": "Columns"
+        }
+      ]
+    },
+    {
+        "workspaces":[
+            {
+              "name": "0",
+              "layout": "Rows",
+              "workspace_rules": [
+                {
+                    "kind": "Exe",
+                    "id": "chrome.exe"
+                }
+                ]
+        }
+        ]
+    }
+  ]
+}
