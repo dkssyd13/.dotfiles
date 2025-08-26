@@ -1,0 +1,93 @@
+.shell powershell
+
+# Reload whkd configuration
+# win + o                 : taskkill /f /im whkd.exe && start /b whkd # if shell is cmd
+# win + o                 : taskkill /f /im whkd.exe; Start-Process whkd -WindowStyle hidden # if shell is pwsh / powershell
+# win + shift + o         : komorebic reload-configuration
+win + shift + r         : komorebic reload-configuration; taskkill /f /im whkd.exe; Start-Process whkd -WindowStyle hidden # if shell is pwsh / powershell
+# win + shift + r           : komorebic stop --whkd --bar; Start-Sleep -Seconds 3; komorebic start --whkd --bar
+# win + shift + r           : taskkill /f /im komorebi.exe /im whkd.exe /im komorebi-bar.exe; Start-Sleep -Seconds 3; Start-Process komorebic -ArgumentList "start --whkd --bar" -WindowStyle hidden
+
+win + i                 : komorebic toggle-shortcuts
+
+# Start apps
+win + shift + c : cursor
+win + shift + v : code
+win + shift + p : if ($wshell.AppActivate('PyCharm') -eq $False) { start pycharm64 }
+win + shift + i : if ($wshell.AppActivate('IntelliJ IDEA') -eq $False) { start idea64 }
+win + shift + return : if ($wshell.AppActivate('Alacritty') -eq $False) { start alacritty }
+win + shift + f : if ($wshell.AppActivate('File Explorer') -eq $False) { start explorer }
+win + shift + n : if ($wshell.AppActivate('Notion') -eq $False) { start notion }
+win + shift + b : if ($wshell.AppActivate('Zen Browser') -eq $False) { start zen-browser }
+
+
+# App shortcuts - these require shell to be pwsh / powershell
+# The apps will be focused if open, or launched if not open
+# win + f                 : if ($wshell.AppActivate('Firefox') -eq $False) { start firefox }
+# win + b                 : if ($wshell.AppActivate('Chrome') -eq $False) { start chrome }
+
+ctrl + q                 : komorebic close
+ctrl + m                 : komorebic minimize
+
+# Focus windows
+win + h                 : komorebic focus left
+win + j                 : komorebic focus down
+win + k                 : komorebic focus up
+win + l                 : komorebic focus right
+# win + shift + oem_4     : komorebic cycle-focus previous # oem_4 is [
+# win + shift + oem_6     : komorebic cycle-focus next # oem_6 is ]
+
+# Move windows
+win + shift + h         : komorebic move left
+win + shift + j         : komorebic move down
+win + shift + k         : komorebic move up
+win + shift + l         : komorebic move right
+# win + shift + return    : komorebic promote
+
+# Stack windows
+# win + left              : komorebic stack left
+# win + down              : komorebic stack down
+# win + up                : komorebic stack up
+# win + right             : komorebic stack right
+# win + oem_1             : komorebic unstack # oem_1 is ;
+# win + oem_4             : komorebic cycle-stack previous # oem_4 is [
+# win + oem_6             : komorebic cycle-stack next # oem_6 is ]
+
+# Resize
+win + oem_plus          : komorebic resize-axis horizontal increase
+win + oem_minus         : komorebic resize-axis horizontal decrease
+win + shift + oem_plus  : komorebic resize-axis vertical increase
+win + shift + oem_minus : komorebic resize-axis vertical decrease
+
+# Manipulate windows
+win + shift + space                 : komorebic toggle-float
+win + f                     : komorebic toggle-monocle
+
+# Window manager options
+# win + shift + r         : komorebic retile
+# win + p                 : komorebic toggle-pause
+
+# Layouts
+# win + x                 : komorebic flip-layout horizontal
+# win + y                 : komorebic flip-layout vertical
+
+# Workspaces - Focus monitor workspaces
+win + 1                 : komorebic focus-monitor-workspace 0 0
+win + 2                 : komorebic focus-monitor-workspace 0 1
+win + 3                 : komorebic focus-monitor-workspace 0 2
+win + 4                 : komorebic focus-monitor-workspace 0 3
+win + 5                 : komorebic focus-monitor-workspace 0 4
+win + 6                 : komorebic focus-monitor-workspace 0 5
+win + 7                 : komorebic focus-monitor-workspace 0 6
+win + 8                 : komorebic focus-monitor-workspace 0 7
+win + 0                 : komorebic focus-monitor-workspace 1 0
+# Move windows across monitor workspaces
+win + shift + 1         : komorebic move-to-monitor-workspace 0 0
+win + shift + 2         : komorebic move-to-monitor-workspace 0 1
+win + shift + 3         : komorebic move-to-monitor-workspace 0 2
+win + shift + 4         : komorebic move-to-monitor-workspace 0 3
+win + shift + 5         : komorebic move-to-monitor-workspace 0 4
+win + shift + 6         : komorebic move-to-monitor-workspace 0 5
+win + shift + 7         : komorebic move-to-monitor-workspace 0 6
+win + shift + 8         : komorebic move-to-monitor-workspace 0 7
+win + shift + 0         : komorebic move-to-monitor-workspace 1 0
