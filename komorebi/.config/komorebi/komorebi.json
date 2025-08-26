@@ -62,6 +62,10 @@
             {
                 "kind": "Exe",
                 "id": "claude.exe"
+            },
+            {
+                "kind": "Exe",
+                "id": "ChatGPT.exe"
             }
             ]
         },
@@ -122,3 +126,4 @@
     }
   ]
 }
+
