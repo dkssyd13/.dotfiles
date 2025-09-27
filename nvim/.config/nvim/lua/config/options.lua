@@ -1,3 +1,14 @@
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
+
+-- LSP
+vim.g.lazyvim_python_lsp = "basedpyright"
+vim.g.autoformat = false
+
+-- Vim
+vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#FF6B00" })
+vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#FF6B00" })
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
@@ -29,3 +40,5 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+
+vim.opt.clipboard = ""

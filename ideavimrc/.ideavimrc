@@ -31,6 +31,7 @@ nmap <c-h> <c-w>h
 nmap <c-j> <c-w>j
 nmap <c-k> <c-w>k
 nmap <c-l> <c-w>l
+nmap gt <Action>(GotoTest)
 
 "Harpoon"
 nmap <leader>H <Action>(ShowHarpoon)
@@ -59,6 +60,7 @@ nmap L <Action>(NextTab)
 "Windows"
 nmap <leader>td <Action>(ActivateTODOToolWindow)
 nmap <Esc> <Action>(HideSideWindows)
+nmap <leader>\ <Action>(ViewToolBar)<Action>(ViewToolButtons)
 
 "Intellij"
 map <leader>ml <Action>(EditorToggleColumnMode)
@@ -78,7 +80,9 @@ map gi <Action>(GotoImplementation)
 
 map <leader>rr <Action>(Refactorings.QuickListPopupAction)
 map <leader>rn <Action>(RenameElement)
+map <leader>rc <Action>(ReformatCode)
 map <leader>in <Action>(Inline)
+map <leader>oi <Action>(OptimizeImports)
 
 map <leader>ca <Action>(ShowIntentionActions)
 map <leader>nv <Action>(IntroduceVariable)
