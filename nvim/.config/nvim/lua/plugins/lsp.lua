@@ -39,13 +39,20 @@ return {
                 reportUnusedImport = "none",
                 reportUnusedFunction = "none",
                 reportUnusedClass = "none",
-                -- 타입 관련만 유지
+                -- 타입 관련 끄기
                 reportAny = "none",
                 reportUnknownParameterType = "none",
               },
             },
           },
         },
+      },
+      sourcekit = {
+        cmd = {
+          "sourcekit-lsp",
+        },
+        filetypes = { "swift", "objective-c", "objective-cpp" },
+        root_dir = require("lspconfig.util").root_pattern("Package.swift", ".git", "compile_commands.json"),
       },
     },
   },

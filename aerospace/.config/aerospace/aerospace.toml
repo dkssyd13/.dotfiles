@@ -160,6 +160,14 @@ run = 'move-node-to-workspace 3'
 if.app-id = 'com.microsoft.VSCode'
 run = 'move-node-to-workspace 3'
 
+[[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
+run = ['layout floating', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.dt.Xcode'
+run = 'move-node-to-workspace 3'
+
 # Terminal to workspace 4
 [[on-window-detected]]
 if.app-id = 'com.googlecode.iterm2'
