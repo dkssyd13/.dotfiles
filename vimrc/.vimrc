@@ -25,7 +25,6 @@ tnoremap <Esc><Esc> <C-\><C-n>
 
 " Diagnostic keymaps (requires LSP plugin)
 nnoremap <leader>q :lopen<CR>
-nnoremap <leader>e :echo "Use floating diagnostic here"<CR>
 nnoremap [d :cprev<CR>
 nnoremap ]d :cnext<CR>
 
