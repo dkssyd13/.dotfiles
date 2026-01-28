@@ -2,6 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 --
+
 -- Refactoring
 vim.keymap.set({ "n", "v" }, "<leader>rc", function()
   LazyVim.format({ force = true })
@@ -36,6 +37,19 @@ vim.keymap.set("n", "<Esc>", function()
     vim.cmd("nohlsearch")
   end
 end, { desc = "Close explorer or clear highlights" })
+
+-- Surrounding
+vim.keymap.set("v", "<leader>'", "gsa'", { remap = true, desc = "Surround with single quotes" })
+vim.keymap.set("v", '<leader>"', 'gsa"', { remap = true, desc = "Surround with double quotes" })
+vim.keymap.set("v", "<leader>(", "gsa)", { remap = true, desc = "Surround with parentheses" })
+vim.keymap.set("v", '<leader>{', 'gsa}', { remap = true, desc = "Surround with braces" })
+vim.keymap.set("v", '<leader><', 'gsa>', { remap = true, desc = "Surround with angle brackets" })
+
+vim.keymap.set("n", "<leader>w'", "gsaw'", { remap = true, desc = "Surround with single quotes" })
+vim.keymap.set("n", '<leader>w"', 'gsaw"', { remap = true, desc = "Surround with double quotes" })
+vim.keymap.set("n", "<leader>w(", "gsaw)", { remap = true, desc = "Surround with parentheses" })
+vim.keymap.set("n", '<leader>w{', 'gsaw}', { remap = true, desc = "Surround with braces" })
+vim.keymap.set("n", '<leader>w<', 'gsaw>', { remap = true, desc = "Surround with angle brackets" })
 
 -- VIM bindings
 vim.keymap.set("n", "]d", function()

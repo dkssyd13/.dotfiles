@@ -8,6 +8,11 @@ return {
       virtual_text = false,
     },
     servers = {
+      ["*"] = {
+        keys = {
+          { "<leader>rn", vim.lsp.buf.rename, desc = "Rename", has = "rename" },
+        },
+      },
       ruff = {
         keys = {
           {
@@ -39,9 +44,12 @@ return {
                 reportUnusedImport = "none",
                 reportUnusedFunction = "none",
                 reportUnusedClass = "none",
+                -- access 관련 끄기
+                reportOptionalMemberAccess = "none",
                 -- 타입 관련 끄기
                 reportAny = "none",
                 reportUnknownParameterType = "none",
+                reportReturnType = "none",
               },
             },
           },
@@ -55,5 +63,21 @@ return {
         root_dir = require("lspconfig.util").root_pattern("Package.swift", ".git", "compile_commands.json"),
       },
     },
+  },
+  setup = {
+    basedpyright = function()
+      local util = require("lspconfig.util")
+
+      require("lspconfig").basedpyright.setup({
+        root_dir = function(fname)
+          -- 기본 패턴으로 찾기 시도
+          local root = util.root_pattern("pyrightconfig.json", "pyproject.toml", "setup.py", ".git")(fname)
+
+          -- 못 찾으면 현재 디렉토리
+          return root or vim.fn.getcwd()
+        end,
+      })
+      return true -- 이 부분이 중요!
+    end,
   },
 }

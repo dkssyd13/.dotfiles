@@ -3,6 +3,7 @@ theme = iterm2like
 background-opacity = 0.85
 background-blur = true
 background-blur-radius = 60
+confirm-close-surface=false
 
 font-family = JetBrainsMono Nerd Font Mono
 font-size = 25

@@ -125,6 +125,10 @@ outer.right =      10
 if.app-id = 'com.apple.Stickies'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-id = 'com.riotgames.RiotGames.RiotClient'
+run = 'layout floating'
+
 # Browsers to workspace 1
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
