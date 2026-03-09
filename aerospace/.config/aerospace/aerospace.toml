@@ -99,7 +99,7 @@ outer.right =      10
     alt-shift-n = ['exec-and-forget open -a "Notion.app"', 'mode main']
 
 [workspace-to-monitor-force-assignment]
-    1 = ['secondary', 'main']
+    10 = ['secondary', 'main']
 
 [mode.settings.binding]
     h = 'resize width +50'
@@ -142,9 +142,13 @@ run = 'move-node-to-workspace 1'
 if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace 1'
 
-# Notion to workspace 2
+# Notes to workspace 2
 [[on-window-detected]]
 if.app-id = 'notion.id'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.goodnotesapp.x'
 run = 'move-node-to-workspace 2'
 
 # Dev : IDE's to workspace 3

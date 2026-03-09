@@ -5,7 +5,16 @@ return {
     scroll = { enabled = false },
     picker = {
       sources = {
+        files = {
+          hidden = true,
+          ignored = true,
+        },
+        grep = {
+          ignored = true,
+        },
         explorer = {
+          hidden = true,
+          ignored = true,
           layout = {
             layout = {
               width = 25, -- 너비만 조정
