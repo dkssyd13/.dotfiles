@@ -58,7 +58,16 @@ ide_part=""
 if [ -n "$ide_name" ]; then
     ide_part=" ${RESET}| ${CYAN}${ide_name}"
 fi
-printf '%s%s%s%s%s%s\n' "$BOLD" "$CYAN" "$model_name" "$RESET" "$git_part" "${CYAN}${ide_part}${RESET}"
+# Folder name (basename of current working directory)
+folder_name=""
+if [ -n "$cwd" ]; then
+    folder_name=$(basename "$cwd")
+fi
+folder_part=""
+if [ -n "$folder_name" ]; then
+    folder_part=" 📁 ${folder_name}"
+fi
+printf '%s%s[%s]%s%s%s%s\n' "$BOLD" "$CYAN" "$model_name" "$RESET" "$folder_part" "$git_part" "${CYAN}${ide_part}${RESET}"
 # --- Line 2: Context usage progress bar ---
 if [ -n "$used_pct" ]; then
     used_int=$(printf "%.0f" "$used_pct")
@@ -75,7 +84,7 @@ else
 fi
 # Build bar: fixed width to match line 1 length
 label="${used_int}%"
-bar_width=40
+bar_width=20
 filled=$(( used_int * bar_width / 100 ))
 if [ "$used_int" -gt 0 ] && [ "$filled" -eq 0 ]; then
     filled=1
@@ -83,7 +92,7 @@ fi
 empty=$(( bar_width - filled ))
 filled_str=""
 if [ "$filled" -gt 0 ]; then
-    filled_str=$(printf '%0.s█' $(seq 1 $filled))
+    filled_str=$(printf '%0.s▓' $(seq 1 $filled))
 fi
 empty_str=""
 if [ "$empty" -gt 0 ]; then

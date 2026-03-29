@@ -2,7 +2,7 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     inlay_hints = {
-      enabled = false,
+      enabled = true,
     },
     diagnostics = {
       virtual_text = false,
@@ -14,6 +14,27 @@ return {
         },
       },
       ruff = {
+        configurationPreference = "filesystemFirst",
+        lineLength = 120,
+
+        lint = {
+          select = {
+            "E",
+            "W",
+            "F",
+            "I",
+            "B",
+            "UP",
+            "C4",
+            "RUF100",
+          },
+
+          ignore = {
+            "E501",
+            "E731",
+            "E741",
+          },
+        },
         keys = {
           {
             "<leader>oi",
@@ -24,7 +45,7 @@ return {
         init_options = {
           settings = {
             lint = {
-              ignore = { "F403", "F405" },
+              -- ignore = { "F403", "F405" },
             },
           },
         },
@@ -33,23 +54,33 @@ return {
         settings = {
           basedpyright = {
             analysis = {
-              typeCheckingMode = "basic",
+              disableOrganizeImports = true,
+              typeCheckingMode = "standard",
               autoSearchPaths = true,
               useLibraryCodeForTypes = true,
               diagnosticMode = "workspace",
               autoImportCompletions = true,
               diagnosticSeverityOverrides = {
-                -- unused 관련 끄기
-                reportUnusedVariable = "none",
                 reportUnusedImport = "none",
-                reportUnusedFunction = "none",
-                reportUnusedClass = "none",
-                -- access 관련 끄기
-                reportOptionalMemberAccess = "none",
-                -- 타입 관련 끄기
-                reportAny = "none",
-                reportUnknownParameterType = "none",
-                reportReturnType = "none",
+                reportUnusedVariable = "none",
+                reportDuplicateImport = "none",
+                reportWildcardImportFromLibrary = "none",
+                reportImplicitStringConcatenation = false,
+                reportUnknownMemberType = false,
+                reportUnknownVariableType = false,
+                reportUnknownParameterType = false,
+                reportUnknownArgumentType = false,
+                reportMissingTypeStubs = "none",
+                reportAny = false,
+                reportMissingParameterType = false,
+                reportUnusedCallResult = false,
+                reportUnknownLambdaType = false,
+              },
+              inlayHints = {
+                callArgumentNames = true,
+                functionReturnTypes = true,
+                variableTypes = true,
+                genericTypes = false,
               },
             },
           },
