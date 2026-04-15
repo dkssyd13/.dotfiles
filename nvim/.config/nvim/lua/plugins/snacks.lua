@@ -3,6 +3,7 @@ return {
   opts = {
     dashboard = { enabled = false },
     scroll = { enabled = false },
+    dim = { enabled = false },
     picker = {
       sources = {
         files = {
