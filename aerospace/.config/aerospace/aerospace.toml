@@ -47,6 +47,8 @@ outer.right =      10
 
     alt-f = 'fullscreen'
 
+    alt-tab = 'workspace-back-and-forth'
+
     alt-s = 'layout v_accordion' # 'layout stacking' in i3
     alt-w = 'layout h_accordion' # 'layout tabbed' in i3
     alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
@@ -194,6 +196,10 @@ run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = 'com.openai.chat'
+run = 'move-node-to-workspace 5'
+
+[[on-window-detected]]
+if.app-id = 'com.openai.codex'
 run = 'move-node-to-workspace 5'
 
 # Finder to workspace 6

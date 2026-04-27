@@ -3,6 +3,18 @@
 -- Add any additional keymaps here
 --
 
+-- Markdown formulas
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    -- 인라인 수식: ;m → $|$
+    vim.keymap.set("i", ";m", "$$<Left>", { buffer = true, desc = "Inline math" })
+
+    -- 블록 수식: ;M → $$\n|\n$$
+    vim.keymap.set("i", ";M", "$$<CR><CR>$$<Up>", { buffer = true, desc = "Display math" })
+  end,
+})
+
 -- Refactoring
 vim.keymap.set({ "n", "v" }, "<leader>rc", function()
   LazyVim.format({ force = true })

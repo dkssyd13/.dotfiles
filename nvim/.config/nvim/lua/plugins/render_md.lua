@@ -1,6 +1,13 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
   opts = {
+    latex = {
+      enabled = true,
+      converter = { "latex2text" },
+      position = "center",
+      top_pad = 0,
+      bottom_pad = 0,
+    },
     heading = {
       enabled = true,
       render_modes = false,
@@ -38,5 +45,5 @@ return {
       },
       custom = {},
     },
-  }
+  },
 }
