@@ -1,6 +1,6 @@
 # This is the configuration file for Ghostty.
 theme = iterm2like
-background-opacity = 0.85
+background-opacity = 0.8
 background-blur = true
 background-blur-radius = 60
 confirm-close-surface=false
@@ -14,3 +14,5 @@ shell-integration-features = no-cursor
 copy-on-select = clipboard
 
 keybind = shift+enter=text:\n
+
+macos-titlebar-style = hidden
