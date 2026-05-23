@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+active_json=$(hyprctl activewindow -j)
+active_addr=$(jq -r '.address // empty' <<<"$active_json")
+workspace_id=$(jq -r '.workspace.id // empty' <<<"$active_json")
+workspace_name=$(jq -r '.workspace.name // empty' <<<"$active_json")
+
+if [[ -z "$active_addr" || "$active_addr" == "null" ]]; then
+  exit 0
+fi
+
+hyprctl clients -j |
+  jq -r \
+    --arg active "$active_addr" \
+    --arg workspace_id "$workspace_id" \
+    --arg workspace_name "$workspace_name" \
+    '.[] |
+      select(.address != $active) |
+      select((.workspace.id | tostring) == $workspace_id and .workspace.name == $workspace_name) |
+      .address' |
+  while read -r address; do
+    [[ -n "$address" ]] && hyprctl dispatch closewindow "address:$address"
+  done
