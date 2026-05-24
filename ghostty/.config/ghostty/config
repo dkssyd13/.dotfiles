@@ -1,8 +1,8 @@
 # Theme
-# - macOS: tokyo-night 적용
+# - macOS: iterm2like 적용
 # - Linux + omarchy: 아래 config-file이 동적으로 덮어쓰기
 # - Linux + omarchy 없음: tokyo-night 폴백
-theme = tokyo-night
+theme = iterm2like
 config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 
 # Font
@@ -17,6 +17,10 @@ window-padding-y = 14
 confirm-close-surface=false
 resize-overlay = never
 gtk-toolbar-style = flat
+background-opacity = 0.9
+background-blur = true
+background-blur-radius = 60
+macos-titlebar-style = hidden
 
 # Cursor styling
 cursor-style = "block"
@@ -33,6 +37,7 @@ keybind = super+control+shift+alt+arrow_down=resize_split:down,100
 keybind = super+control+shift+alt+arrow_up=resize_split:up,100
 keybind = super+control+shift+alt+arrow_left=resize_split:left,100
 keybind = super+control+shift+alt+arrow_right=resize_split:right,100
+keybind = shift+enter=text:\n
 
 # Slowdown mouse scrolling
 mouse-scroll-multiplier = 0.95
