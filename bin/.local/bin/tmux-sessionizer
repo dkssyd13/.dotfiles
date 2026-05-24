@@ -39,7 +39,7 @@ if [[ -f "$CONFIG_FILE_NAME" ]]; then
     source "$CONFIG_FILE_NAME"
 fi
 
-if [[ $TS_LOG != "true" ]]; then
+if [[ $TS_LOG == "file" || $TS_LOG == "true" ]]; then
     if [[ -z $TS_LOG_FILE ]]; then
         TS_LOG_FILE="$HOME/.local/share/tmux-sessionizer/tmux-sessionizer.logs"
     fi
@@ -52,7 +52,7 @@ log() {
         return
     elif [[ $TS_LOG == "echo" ]]; then
         echo "$*"
-    elif [[ $TS_LOG == "file" ]]; then
+    elif [[ $TS_LOG == "file" || $TS_LOG == "true" ]]; then
         echo "$*" >> "$TS_LOG_FILE"
     fi
 }
