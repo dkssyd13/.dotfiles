@@ -1,7 +1,6 @@
 {
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "CLAUDE_CODE_EFFORT_LEVEL": "max",
     "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1"
   },
   "permissions": {
@@ -66,13 +65,17 @@
     }
   },
   "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
   "tui": "default",
   "voice": {
     "enabled": false,
     "mode": "hold"
   },
+  "skipWorkflowUsageWarning": true,
   "editorMode": "vim",
+  "autoCompactEnabled": true,
   "teammateMode": "tmux",
+  "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": false,
