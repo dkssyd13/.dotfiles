@@ -55,26 +55,28 @@ return {
           basedpyright = {
             analysis = {
               disableOrganizeImports = true,
-              typeCheckingMode = "standard",
+              typeCheckingMode = "off",
               autoSearchPaths = true,
               useLibraryCodeForTypes = true,
               diagnosticMode = "workspace",
               autoImportCompletions = true,
               diagnosticSeverityOverrides = {
-                reportUnusedImport = "none",
-                reportUnusedVariable = "none",
-                reportDuplicateImport = "none",
-                reportWildcardImportFromLibrary = "none",
-                reportImplicitStringConcatenation = false,
-                reportUnknownMemberType = false,
-                reportUnknownVariableType = false,
-                reportUnknownParameterType = false,
-                reportUnknownArgumentType = false,
-                reportMissingTypeStubs = "none",
-                reportAny = false,
-                reportMissingParameterType = false,
-                reportUnusedCallResult = false,
-                reportUnknownLambdaType = false,
+                -- basic 모드에서도 켜져 있어 끄는 의미가 있는 항목 (유지)
+                -- reportUnusedImport = "none", -- basic 기본값: hint
+                -- reportUnusedVariable = "none", -- basic 기본값: hint
+                -- reportWildcardImportFromLibrary = "none", -- basic 기본값: warning
+                -- 아래는 basic 모드에서 이미 none이라 불필요 (recommended 모드 잔소리용이었음)
+                -- reportDuplicateImport = "none",
+                -- reportImplicitStringConcatenation = false,
+                -- reportUnknownMemberType = false,
+                -- reportUnknownVariableType = false,
+                -- reportUnknownParameterType = false,
+                -- reportUnknownArgumentType = false,
+                -- reportMissingTypeStubs = "none",
+                -- reportAny = false,
+                -- reportMissingParameterType = false,
+                -- reportUnusedCallResult = false,
+                -- reportUnknownLambdaType = false,
               },
               inlayHints = {
                 callArgumentNames = true,

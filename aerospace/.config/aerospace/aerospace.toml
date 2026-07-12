@@ -1,5 +1,8 @@
 # Reference: https://github.com/i3/i3/blob/next/etc/config
 
+# https://nikitabobko.github.io/AeroSpace/guide#config-version
+config-version = 2
+
 # Start Aerospace at login
 start-at-login = true
 
@@ -106,7 +109,7 @@ outer.right =      10
     alt-shift-v = ['exec-and-forget open -a "Visual Studio Code.app"', 'mode main']
     alt-shift-p = ['exec-and-forget open -a "PyCharm.app"', 'mode main']
     alt-shift-f = ['exec-and-forget open -a "Finder"', 'mode main']
-    alt-shift-b = ['exec-and-forget open -a "Zen.app"', 'mode main']
+    alt-shift-b = ['exec-and-forget open -a "Google Chrome"', 'mode main']
     alt-shift-n = ['exec-and-forget open -a "Notion.app"', 'mode main']
 
 [workspace-to-monitor-force-assignment]
