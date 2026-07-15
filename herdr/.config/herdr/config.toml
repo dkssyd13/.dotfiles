@@ -1,0 +1,5 @@
+[ui.toast]
+delivery = "system"
+
+[keys]
+prefix = "ctrl+a"

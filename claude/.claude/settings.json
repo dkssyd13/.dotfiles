@@ -51,6 +51,7 @@
     }
   },
   "language": "Korean",
+  "cleanupPeriodDays": 99999,
   "sandbox": {
     "network": {
       "allowedDomains": [
@@ -84,5 +85,6 @@
   "voiceEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754138233856
-  }
+  },
+  "model": "claude-fable-5[1m]"
 }
