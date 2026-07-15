@@ -1,8 +1,173 @@
 {
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1"
+  "agentPushNotifEnabled": true,
+  "alwaysThinkingEnabled": true,
+  "autoCompactEnabled": true,
+  "cleanupPeriodDays": 99999,
+  "editorMode": "vim",
+  "effortLevel": "high",
+  "enabledPlugins": {
+    "codex@openai-codex": true,
+    "context7@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true
   },
+  "env": {
+    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "extraKnownMarketplaces": {
+    "anthropic-agent-skills": {
+      "source": {
+        "repo": "anthropics/skills",
+        "source": "github"
+      }
+    },
+    "karpathy-skills": {
+      "source": {
+        "repo": "forrestchang/andrej-karpathy-skills",
+        "source": "github"
+      }
+    },
+    "openai-codex": {
+      "source": {
+        "repo": "openai/codex-plugin-cc",
+        "source": "github"
+      }
+    }
+  },
+  "feedbackSurveyState": {
+    "lastShownTime": 1754138233856
+  },
+  "hooks": {
+    "PermissionRequest": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bash '/Users/vladkim/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "TeammateIdle": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "inputNeededNotifEnabled": true,
+  "language": "Korean",
+  "model": "claude-fable-5[1m]",
   "permissions": {
     "allow": [
       "Read",
@@ -18,40 +183,9 @@
       "Bash(sudo *)",
       "Bash(git push --force*)",
       "Read(.env*)",
-      "Write(.env*)"
+      "Edit(.env*)"
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "bash ~/.claude/statusline-command.sh"
-  },
-  "enabledPlugins": {
-    "skill-creator@claude-plugins-official": true,
-    "context7@claude-plugins-official": true,
-    "codex@openai-codex": true
-  },
-  "extraKnownMarketplaces": {
-    "anthropic-agent-skills": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/skills"
-      }
-    },
-    "karpathy-skills": {
-      "source": {
-        "source": "github",
-        "repo": "forrestchang/andrej-karpathy-skills"
-      }
-    },
-    "openai-codex": {
-      "source": {
-        "source": "github",
-        "repo": "openai/codex-plugin-cc"
-      }
-    }
-  },
-  "language": "Korean",
-  "cleanupPeriodDays": 99999,
   "sandbox": {
     "network": {
       "allowedDomains": [
@@ -68,23 +202,17 @@
       ]
     }
   },
-  "alwaysThinkingEnabled": true,
-  "effortLevel": "high",
+  "skipAutoPermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
+  "statusLine": {
+    "command": "bash ~/.claude/statusline-command.sh",
+    "type": "command"
+  },
+  "teammateMode": "tmux",
   "tui": "default",
   "voice": {
     "enabled": false,
     "mode": "hold"
   },
-  "skipWorkflowUsageWarning": true,
-  "editorMode": "vim",
-  "autoCompactEnabled": true,
-  "teammateMode": "tmux",
-  "inputNeededNotifEnabled": true,
-  "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "voiceEnabled": false,
-  "feedbackSurveyState": {
-    "lastShownTime": 1754138233856
-  },
-  "model": "claude-fable-5[1m]"
+  "voiceEnabled": false
 }
