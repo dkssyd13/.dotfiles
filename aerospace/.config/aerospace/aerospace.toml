@@ -6,6 +6,9 @@ config-version = 2
 # Start Aerospace at login
 start-at-login = true
 
+# Keep the dedicated external-monitor workspace alive even when it is empty.
+persistent-workspaces = ['0']
+
 # i3 doesn't have "normalizations" feature that why we disable them here.
 # But the feature is very helpful.
 # Normalizations eliminate all sorts of weird tree configurations that don't make sense.
@@ -29,7 +32,7 @@ after-startup-command = [
     # 'exec-and-forget borders active_color=0xffff6b00 inactive_color=0xff494d64 width=8.0 blacklist="iPhone Mirroring"'
 
     # Light Green 
-    'exec-and-forget borders active_color=0xff7daea3 inactive_color=0xff494d64 width=5.0 blacklist="iPhone Mirroring"'
+    'exec-and-forget borders active_color=0xff7daea3 inactive_color=0xff494d64 width=8.0 blacklist="iPhone Mirroring"'
 
     # Blue
     # 'exec-and-forget borders active_color=0xff7aa2f7 inactive_color=0xff494d64 width=8.0 blacklist="iPhone Mirroring"'
@@ -113,7 +116,9 @@ outer.right =      5
     alt-shift-n = ['exec-and-forget open -a "Notion.app"', 'mode main']
 
 [workspace-to-monitor-force-assignment]
-    0 = [1, 2, 3]
+    # Prefer the current external display, then any secondary display.
+    # Fall back to the main display when no external display is connected.
+    0 = ['secondary', 'main']
 
 [mode.settings.binding]
     h = 'resize width +50'

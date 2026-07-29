@@ -1,5 +1,8 @@
+onboarding = false
 [ui.toast]
 delivery = "system"
 
 [keys]
 prefix = "ctrl+a"
+switch_tab = ["prefix+1..9", "alt+1..9"]
+focus_agent = "prefix+alt+1..9"

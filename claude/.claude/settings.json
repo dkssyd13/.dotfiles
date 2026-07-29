@@ -1,42 +1,28 @@
 {
-  "agentPushNotifEnabled": true,
-  "alwaysThinkingEnabled": true,
-  "autoCompactEnabled": true,
   "cleanupPeriodDays": 99999,
-  "editorMode": "vim",
-  "effortLevel": "high",
-  "enabledPlugins": {
-    "codex@openai-codex": true,
-    "context7@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true
-  },
   "env": {
     "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "extraKnownMarketplaces": {
-    "anthropic-agent-skills": {
-      "source": {
-        "repo": "anthropics/skills",
-        "source": "github"
-      }
-    },
-    "karpathy-skills": {
-      "source": {
-        "repo": "forrestchang/andrej-karpathy-skills",
-        "source": "github"
-      }
-    },
-    "openai-codex": {
-      "source": {
-        "repo": "openai/codex-plugin-cc",
-        "source": "github"
-      }
-    }
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash",
+      "WebFetch",
+      "WebSearch"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(rm -r *)",
+      "Bash(sudo *)",
+      "Bash(git push --force*)",
+      "Read(.env*)",
+      "Edit(.env*)"
+    ]
   },
-  "feedbackSurveyState": {
-    "lastShownTime": 1754138233856
-  },
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "PermissionRequest": [
       {
@@ -88,14 +74,14 @@
     ],
     "SessionStart": [
       {
+        "matcher": "*",
         "hooks": [
           {
+            "type": "command",
             "command": "bash '/Users/vladkim/.claude/hooks/herdr-agent-state.sh' session",
-            "timeout": 10,
-            "type": "command"
+            "timeout": 10
           }
-        ],
-        "matcher": "*"
+        ]
       }
     ],
     "Stop": [
@@ -165,27 +151,36 @@
       }
     ]
   },
-  "inputNeededNotifEnabled": true,
-  "language": "Korean",
-  "model": "claude-fable-5[1m]",
-  "permissions": {
-    "allow": [
-      "Read",
-      "Glob",
-      "Grep",
-      "Bash",
-      "WebFetch",
-      "WebSearch"
-    ],
-    "deny": [
-      "Bash(rm -rf *)",
-      "Bash(rm -r *)",
-      "Bash(sudo *)",
-      "Bash(git push --force*)",
-      "Read(.env*)",
-      "Edit(.env*)"
-    ]
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
   },
+  "enabledPlugins": {
+    "codex@openai-codex": true,
+    "context7@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "anthropic-agent-skills": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      }
+    },
+    "karpathy-skills": {
+      "source": {
+        "source": "github",
+        "repo": "forrestchang/andrej-karpathy-skills"
+      }
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    }
+  },
+  "language": "Korean",
   "sandbox": {
     "network": {
       "allowedDomains": [
@@ -202,17 +197,22 @@
       ]
     }
   },
-  "skipAutoPermissionPrompt": true,
-  "skipWorkflowUsageWarning": true,
-  "statusLine": {
-    "command": "bash ~/.claude/statusline-command.sh",
-    "type": "command"
-  },
-  "teammateMode": "tmux",
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "xhigh",
   "tui": "default",
   "voice": {
     "enabled": false,
     "mode": "hold"
   },
-  "voiceEnabled": false
+  "skipWorkflowUsageWarning": true,
+  "editorMode": "vim",
+  "autoCompactEnabled": true,
+  "teammateMode": "tmux",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": false,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754138233856
+  }
 }
