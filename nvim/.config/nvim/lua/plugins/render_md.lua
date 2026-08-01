@@ -1,6 +1,11 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
   opts = {
+    html = {
+      comment = {
+        conceal = false,
+      },
+    },
     latex = {
       enabled = true,
       converter = { "latex2text" },
