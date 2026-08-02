@@ -1,9 +1,5 @@
 {
   "cleanupPeriodDays": 99999,
-  "env": {
-    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
-  },
   "permissions": {
     "allow": [
       "Read",
@@ -24,54 +20,6 @@
   },
   "model": "claude-fable-5[1m]",
   "hooks": {
-    "PermissionRequest": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "PostToolUseFailure": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "PreToolUse": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
     "SessionStart": [
       {
         "matcher": "*",
@@ -79,72 +27,6 @@
           {
             "type": "command",
             "command": "bash '/Users/vladkim/.claude/hooks/herdr-agent-state.sh' session",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "StopFailure": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "SubagentStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "SubagentStop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "TeammateIdle": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
-            "timeout": 10
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "if [ -f '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -r '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ] && [ -x '/Users/vladkim/.orca/agent-hooks/claude-hook.sh' ]; then /bin/sh '/Users/vladkim/.orca/agent-hooks/claude-hook.sh'; else cat >/dev/null 2>&1 || :; fi",
             "timeout": 10
           }
         ]
@@ -211,7 +93,6 @@
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "voiceEnabled": false,
   "feedbackSurveyState": {
     "lastShownTime": 1754138233856
   }

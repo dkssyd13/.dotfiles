@@ -177,6 +177,10 @@ run = 'move-node-to-workspace 2'
 if.app-id = 'com.goodnotesapp.x'
 run = 'move-node-to-workspace 2'
 
+[[on-window-detected]]
+if.app-id = 'com.adibhanna.zennotes'
+run = 'move-node-to-workspace 2'
+
 # Dev : IDE's to workspace 3
 [[on-window-detected]]
 if.app-id = 'com.jetbrains.pycharm'
