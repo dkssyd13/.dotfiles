@@ -30,15 +30,6 @@ cursor-style-blink = false
 # (all shell integration options must be passed together)
 shell-integration-features = no-cursor,ssh-env
 
-# Keyboard bindings
-keybind = shift+insert=paste_from_clipboard
-keybind = control+insert=copy_to_clipboard
-keybind = super+control+shift+alt+arrow_down=resize_split:down,100
-keybind = super+control+shift+alt+arrow_up=resize_split:up,100
-keybind = super+control+shift+alt+arrow_left=resize_split:left,100
-keybind = super+control+shift+alt+arrow_right=resize_split:right,100
-keybind = shift+enter=text:\n
-
 # macOS: Cmd+숫자 → ESC+숫자(M-숫자) 전송 → tmux window 전환
 # (Linux/omarchy에선 Super+숫자를 Hyprland가 워크스페이스 전환에 먼저 가로채므로 무영향)
 keybind = super+physical:one=text:\x1b1
@@ -59,6 +50,9 @@ keybind = super+physical:eight=text:\x1b8
 keybind = super+eight=text:\x1b8
 keybind = super+physical:nine=text:\x1b9
 keybind = super+nine=text:\x1b9
+
+# Copy selected text to the system clipboard
+copy-on-select = clipboard
 
 # Slowdown mouse scrolling
 mouse-scroll-multiplier = 0.95

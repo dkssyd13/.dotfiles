@@ -5,4 +5,9 @@ delivery = "system"
 [keys]
 prefix = "ctrl+a"
 switch_tab = ["prefix+1..9", "alt+1..9"]
-focus_agent = "prefix+alt+1..9"
+switch_workspace = ["prefix+ctrl+1..9", "ctrl+1..9"]
+# focus_agent = "prefix+alt+1..9"
+
+[theme]
+name = "tokyo-night"
+auto_switch = false
