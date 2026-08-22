@@ -11,6 +11,10 @@
     ],
     "defaultMode": "auto"
   },
+  "skillOverrides": {
+    "course-practice-problems": "off",
+    "paper-scout": "off"
+  },
   "hooks": {
     "SessionStart": [
       {
@@ -30,25 +34,10 @@
     "command": "bash ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "codex@openai-codex": true,
-    "context7@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true,
-    "i-have-adhd@i-have-adhd": true
+    "context7@claude-plugins-official": false,
+    "skill-creator@claude-plugins-official": false
   },
-  "extraKnownMarketplaces": {
-    "openai-codex": {
-      "source": {
-        "source": "github",
-        "repo": "openai/codex-plugin-cc"
-      }
-    },
-    "i-have-adhd": {
-      "source": {
-        "source": "github",
-        "repo": "ayghri/i-have-adhd"
-      }
-    }
-  },
+  "extraKnownMarketplaces": {},
   "language": "Korean",
   "sandbox": {
     "network": {
@@ -77,5 +66,6 @@
   "skipAutoPermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754138233856
-  }
+  },
+  "model": "claude-fable-5[1m]"
 }
