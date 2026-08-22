@@ -1,0 +1,1 @@
+-- Fcitx5 is supervised by Omarchy's omarchy-fcitx5.service.
