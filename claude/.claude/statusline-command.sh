@@ -99,3 +99,68 @@ if [ "$empty" -gt 0 ]; then
     empty_str=$(printf '%0.s░' $(seq 1 $empty))
 fi
 printf '%s%s%s%s %s%s%s' "$bar_color" "$filled_str" "$RESET" "$empty_str" "$bar_color" "$label" "$RESET"
+
+# --- Line 3: Rate limit usage (5-hour and weekly), text only ---
+five_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
+five_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
+week_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
+week_resets=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty')
+
+now_epoch=$(date +%s)
+DIM=$'\033[0;90m'
+
+format_countdown() {
+    # $1 = resets_at epoch seconds -> "3d4h" / "4h8m" / "12m", "0m" if already past
+    local resets="$1" diff days hours minutes
+    diff=$(( resets - now_epoch ))
+    if [ "$diff" -le 0 ]; then
+        echo "0m"
+        return
+    fi
+    days=$(( diff / 86400 ))
+    hours=$(( (diff % 86400) / 3600 ))
+    minutes=$(( (diff % 3600) / 60 ))
+    if [ "$days" -gt 0 ]; then
+        echo "${days}d${hours}h"
+    elif [ "$hours" -gt 0 ]; then
+        echo "${hours}h${minutes}m"
+    else
+        echo "${minutes}m"
+    fi
+}
+
+limit_segment() {
+    # $1 = label, $2 = used_percentage, $3 = resets_at (may be empty)
+    local label="$1" pct="$2" resets="$3" pct_int color seg cd
+    pct_int=$(printf "%.0f" "$pct")
+    if [ "$pct_int" -ge 90 ]; then
+        color="$RED"
+    elif [ "$pct_int" -ge 70 ]; then
+        color="$YELLOW"
+    else
+        color="$GREEN"
+    fi
+    seg="${label} ${color}${pct_int}%${RESET}"
+    if [ -n "$resets" ]; then
+        cd=$(format_countdown "$resets")
+        seg="${seg} ${DIM}(${cd})${RESET}"
+    fi
+    printf '%s' "$seg"
+}
+
+limit_line=""
+if [ -n "$five_pct" ]; then
+    limit_line=$(limit_segment "5h" "$five_pct" "$five_resets")
+fi
+if [ -n "$week_pct" ]; then
+    week_seg=$(limit_segment "7d" "$week_pct" "$week_resets")
+    if [ -n "$limit_line" ]; then
+        limit_line="${limit_line}   ${week_seg}"
+    else
+        limit_line="$week_seg"
+    fi
+fi
+
+if [ -n "$limit_line" ]; then
+    printf '\n%s' "$limit_line"
+fi

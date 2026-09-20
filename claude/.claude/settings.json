@@ -11,6 +11,7 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "claude-fable-5-1[1m]",
   "skillOverrides": {
     "course-practice-problems": "off",
     "paper-scout": "off"
@@ -26,6 +27,16 @@
             "timeout": 10
           }
         ]
+      },
+      {
+        "matcher": "^(startup|resume|clear|compact|fork)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/vladkim/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
       }
     ]
   },
@@ -34,10 +45,26 @@
     "command": "bash ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "context7@claude-plugins-official": false,
-    "skill-creator@claude-plugins-official": false
+    "context7@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": false,
+    "academic-research-skills@academic-research-skills": true,
+    "figma@claude-plugins-official": true,
+    "i-have-adhd@i-have-adhd": true
   },
-  "extraKnownMarketplaces": {},
+  "extraKnownMarketplaces": {
+    "academic-research-skills": {
+      "source": {
+        "source": "github",
+        "repo": "Imbad0202/academic-research-skills"
+      }
+    },
+    "i-have-adhd": {
+      "source": {
+        "source": "github",
+        "repo": "ayghri/i-have-adhd"
+      }
+    }
+  },
   "language": "Korean",
   "sandbox": {
     "network": {
@@ -56,6 +83,14 @@
     }
   },
   "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "xhigh"
+    },
+    "claude-fable-5-1": {
+      "effortLevel": "high"
+    }
+  },
   "tui": "fullscreen",
   "skipWorkflowUsageWarning": true,
   "theme": "auto",
@@ -66,6 +101,5 @@
   "skipAutoPermissionPrompt": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754138233856
-  },
-  "model": "claude-fable-5[1m]"
+  }
 }

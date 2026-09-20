@@ -8,7 +8,7 @@ return {
       sources = {
         files = {
           hidden = true,
-          ignored = true,
+          ignored = false,
         },
         grep = {
           ignored = true,

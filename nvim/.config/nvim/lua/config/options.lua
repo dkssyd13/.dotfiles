@@ -3,7 +3,8 @@
 -- Add any additional options here
 
 -- LSP
-vim.g.lazyvim_python_lsp = "basedpyright"
+-- vim.g.lazyvim_python_lsp = "basedpyright"
+vim.g.lazyvim_python_lsp = "pyrefly"
 vim.g.autoformat = false
 
 -- Vim

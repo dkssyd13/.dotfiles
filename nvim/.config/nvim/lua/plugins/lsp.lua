@@ -50,44 +50,45 @@ return {
           },
         },
       },
-      basedpyright = {
-        settings = {
-          basedpyright = {
-            analysis = {
-              disableOrganizeImports = true,
-              typeCheckingMode = "off",
-              autoSearchPaths = true,
-              useLibraryCodeForTypes = true,
-              diagnosticMode = "workspace",
-              autoImportCompletions = true,
-              diagnosticSeverityOverrides = {
-                -- basic 모드에서도 켜져 있어 끄는 의미가 있는 항목 (유지)
-                -- reportUnusedImport = "none", -- basic 기본값: hint
-                -- reportUnusedVariable = "none", -- basic 기본값: hint
-                -- reportWildcardImportFromLibrary = "none", -- basic 기본값: warning
-                -- 아래는 basic 모드에서 이미 none이라 불필요 (recommended 모드 잔소리용이었음)
-                -- reportDuplicateImport = "none",
-                -- reportImplicitStringConcatenation = false,
-                -- reportUnknownMemberType = false,
-                -- reportUnknownVariableType = false,
-                -- reportUnknownParameterType = false,
-                -- reportUnknownArgumentType = false,
-                -- reportMissingTypeStubs = "none",
-                -- reportAny = false,
-                -- reportMissingParameterType = false,
-                -- reportUnusedCallResult = false,
-                -- reportUnknownLambdaType = false,
-              },
-              inlayHints = {
-                callArgumentNames = true,
-                functionReturnTypes = true,
-                variableTypes = true,
-                genericTypes = false,
-              },
-            },
-          },
-        },
-      },
+      pyrefly = {},
+      -- basedpyright = {
+      --   settings = {
+      --     basedpyright = {
+      --       analysis = {
+      --         disableOrganizeImports = true,
+      --         typeCheckingMode = "off",
+      --         autoSearchPaths = true,
+      --         useLibraryCodeForTypes = true,
+      --         diagnosticMode = "workspace",
+      --         autoImportCompletions = true,
+      --         diagnosticSeverityOverrides = {
+      --           -- basic 모드에서도 켜져 있어 끄는 의미가 있는 항목 (유지)
+      --           -- reportUnusedImport = "none", -- basic 기본값: hint
+      --           -- reportUnusedVariable = "none", -- basic 기본값: hint
+      --           -- reportWildcardImportFromLibrary = "none", -- basic 기본값: warning
+      --           -- 아래는 basic 모드에서 이미 none이라 불필요 (recommended 모드 잔소리용이었음)
+      --           -- reportDuplicateImport = "none",
+      --           -- reportImplicitStringConcatenation = false,
+      --           -- reportUnknownMemberType = false,
+      --           -- reportUnknownVariableType = false,
+      --           -- reportUnknownParameterType = false,
+      --           -- reportUnknownArgumentType = false,
+      --           -- reportMissingTypeStubs = "none",
+      --           -- reportAny = false,
+      --           -- reportMissingParameterType = false,
+      --           -- reportUnusedCallResult = false,
+      --           -- reportUnknownLambdaType = false,
+      --         },
+      --         inlayHints = {
+      --           callArgumentNames = true,
+      --           functionReturnTypes = true,
+      --           variableTypes = true,
+      --           genericTypes = false,
+      --         },
+      --       },
+      --     },
+      --   },
+      -- },
       sourcekit = {
         cmd = {
           "sourcekit-lsp",
@@ -98,19 +99,19 @@ return {
     },
   },
   setup = {
-    basedpyright = function()
-      local util = require("lspconfig.util")
-
-      require("lspconfig").basedpyright.setup({
-        root_dir = function(fname)
-          -- 기본 패턴으로 찾기 시도
-          local root = util.root_pattern("pyrightconfig.json", "pyproject.toml", "setup.py", ".git")(fname)
-
-          -- 못 찾으면 현재 디렉토리
-          return root or vim.fn.getcwd()
-        end,
-      })
-      return true -- 이 부분이 중요!
-    end,
+    -- basedpyright = function()
+    --   local util = require("lspconfig.util")
+    --
+    --   require("lspconfig").basedpyright.setup({
+    --     root_dir = function(fname)
+    --       -- 기본 패턴으로 찾기 시도
+    --       local root = util.root_pattern("pyrightconfig.json", "pyproject.toml", "setup.py", ".git")(fname)
+    --
+    --       -- 못 찾으면 현재 디렉토리
+    --       return root or vim.fn.getcwd()
+    --     end,
+    --   })
+    --   return true -- 이 부분이 중요!
+    -- end,
   },
 }
