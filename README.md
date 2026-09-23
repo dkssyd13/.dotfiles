@@ -28,6 +28,22 @@ The tracked Claude settings refer to the optional Herdr integration hook through
 path changes. Install that hook separately with `herdr integration install
 claude` on machines where the integration is wanted.
 
+The `cursor` package links `settings.json` and `keybindings.json` into
+`~/Library/Application Support/Cursor/User` on macOS and
+`~/.config/Cursor/User` on Linux, then installs any extensions from
+`cursor/extensions.txt` that are missing. After adding or removing extensions,
+refresh the list with:
+
+```bash
+cursor --list-extensions | sort > ~/.dotfiles/cursor/extensions.txt
+```
+
+Machine-local Cursor settings (Remote-SSH host platforms, window zoom) stay on
+disk but are stripped from commits by a git clean filter. The keys are listed
+in `cursor/local-keys.sed`; `install.sh cursor` registers the filter in this
+clone. If `git status` shows `settings.json` as modified while `git diff` is
+empty, only local keys changed; `git add` clears it.
+
 Use `--all` only when you really want packages for every operating system.
 Conflicting files are moved to `~/.local/state/dotfiles-backups/<timestamp>/`.
 
