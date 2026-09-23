@@ -1,5 +1,9 @@
 {
   "cleanupPeriodDays": 99999,
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "deny": [
       "Bash(rm -rf *)",
@@ -11,7 +15,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5-1[1m]",
+  "model": "opus[1m]",
   "skillOverrides": {
     "course-practice-problems": "off",
     "paper-scout": "off"
@@ -89,17 +93,17 @@
     },
     "claude-fable-5-1": {
       "effortLevel": "high"
+    },
+    "claude-opus-5-5": {
+      "effortLevel": "high"
     }
   },
   "tui": "fullscreen",
-  "skipWorkflowUsageWarning": true,
   "theme": "auto",
   "editorMode": "vim",
   "teammateMode": "tmux",
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "feedbackSurveyState": {
-    "lastShownTime": 1754138233856
-  }
+  "remoteControlAtStartup": true
 }

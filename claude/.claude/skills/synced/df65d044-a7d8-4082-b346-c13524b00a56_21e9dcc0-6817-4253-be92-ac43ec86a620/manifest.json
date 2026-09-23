@@ -1,5 +1,5 @@
 {
-  "lastUpdated": 1789642162066,
+  "lastUpdated": 1790136719667,
   "skills": [
     {
       "skillId": "pdf",
@@ -47,8 +47,9 @@
       "skillId": "skill_015TmjawqeN3WgtizjUcBnjt",
       "name": "admin-task-helper",
       "description": "중앙대 행정 시스템에서 정산/구매 업무를 처리할 때 물품분류, 거래물품명, 규격, 비치장소 같은 입력 필드를 뭘로 채워야 할지 추천해주는 스킬. 회의비 정산 시 회의명·회의 내용 작성도 도와준다. 사용자가 \"이거 정산해야 하는데 물품분류 뭘로 해?\", \"Linear 구독 정산\", \"노션 구독료 처리\", \"도서 구매 정산\", \"학회 참가비 정산\", \"출장비 정산\", \"거래물품명 뭐로 적어?\", \"규격 어떻게 써?\", \"회의명 잡아줘\", \"회의 내용 작성\", \"X 관련 회의명으로 잡자\", \"세미나 회의록\" 등을 물어보면 이 스킬을 사용한다. 행정 시스템 정산 입력, 영수증/세금계산서 처리, 출장/회의비 정산, 연구비 집행 처리 같은 행정 업무 질문이면 모두 이 스킬을 사용한다. SaaS 구독, 물품 구매, 도서/논문, 학회 참가비, 출장비, 내부 회의비 처리 등 정산 대상이 무엇이든 행정 시스템 입력 관련이면 이 스킬을 활용한다.",
-      "source": "custom",
-      "updatedAt": "2026-05-11T10:32:30.752600Z"
+      "source": "plugin",
+      "updatedAt": "2026-05-11T10:32:30.752463Z",
+      "backingPluginId": "plugin_016BsAtVkrGk8AnaP57VoZKV"
     },
     {
       "skillId": "morning",
@@ -60,16 +61,16 @@
     {
       "skillId": "docx",
       "name": "docx",
-      "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx) or Word templates (.dotx). Triggers include: any mention of 'Word doc', 'word document', '.docx', '.dotx', or requests to produce professional documents with formatting like tables of contents, page numbers, or letterheads. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a 'report', 'memo', 'letter', 'template', or similar deliverable as a Word or .docx file (to download, email or print), use this skill. However, if they ask for a document, page, report, memo, or notes WITHOUT naming a file format and the session offers Claude's own dedicated document or page skill or connector, use that instead. Do NOT use for PDFs, spreadsheets, Google Docs, or coding unrelated to document generation.",
+      "description": "Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx) or Word templates (.dotx). Triggers include: any mention of Microsoft Word Documents, such as 'Word doc', 'word document', '.docx', '.dotx', 'microsoft doc'. Also use when extracting or reorganizing content from .docx or .dotx files, inserting or replacing images in documents, find-and-replace in Word files, working with tracked changes or comments, or converting content into a polished Word document. If the user asks for a deliverable as a Word or .docx file (to download, email or print), use this skill. However, if they ask for a document, page, report, memo, or notes WITHOUT naming a file format and the session offers Claude's own dedicated document or page skill or connector, use that instead, even if they will email or print it. Do NOT use for PDFs, spreadsheets, Google Docs, or coding unrelated to document generation.",
       "source": "anthropic",
-      "updatedAt": "2026-09-14T21:00:33.279708Z"
+      "updatedAt": "2026-09-23T04:00:28.352014Z"
     },
     {
       "skillId": "pptx",
       "name": "pptx",
       "description": "Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations as PowerPoint (.pptx) files; reading, parsing, or extracting text from any .pptx or .potx file (even if the extracted content will be used elsewhere, like in an email, summary, or creating a different type of slide deck); editing, modifying, or updating existing presentations; combining or splitting slide files; working with templates (.potx), layouts, speaker notes, or comments. Trigger whenever the user asks for a PowerPoint or .pptx file, or references a .pptx or .potx filename, regardless of what they plan to do with the content afterward. However, when the user asks for a deck, slides, a slide deck, or a presentation without naming a file format, default to using a dedicated slide-deck artifact type or a separate slides skill if this session offers one; otherwise, use this skill.",
       "source": "anthropic",
-      "updatedAt": "2026-09-14T21:00:33.306681Z"
+      "updatedAt": "2026-09-22T18:00:37.886566Z"
     }
   ]
 }
