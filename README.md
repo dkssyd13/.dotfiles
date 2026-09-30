@@ -19,9 +19,11 @@ packages, pass their directory names, for example:
 ./install.sh ghostty nvim tmux
 ```
 
-On Linux, the defaults also install the tracked Claude and Herdr configuration.
-Runtime files such as Herdr sessions, logs, and plugin locks are not tracked and
-remain machine-local.
+The defaults install the tracked Herdr configuration on both macOS and Linux,
+and the tracked Claude configuration on Linux. Runtime files such as Herdr
+sessions, logs, and plugin locks are not tracked and remain machine-local.
+Claude Code downloads skills from the claude.ai account into
+`~/.claude/skills/synced/`; that directory is not tracked either.
 
 The tracked Claude settings refer to the optional Herdr integration hook through
 `$HOME`, so the same settings work on macOS and Omarchy without OS-specific

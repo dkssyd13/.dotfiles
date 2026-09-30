@@ -1,3 +1,7 @@
-# Herdr runtime files — only config.toml is managed
+# Herdr runtime files — only config.toml and scripts are managed
 herdr/.config/herdr/*
 !herdr/.config/herdr/config.toml
+!herdr/.config/herdr/*.sh
+
+# Claude Code synced skills — auto-downloaded from claude.ai, not managed here
+claude/.claude/skills/synced/
