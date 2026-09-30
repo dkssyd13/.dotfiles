@@ -771,6 +771,5 @@
     "workbench.agentsWindowButton.enabled": false,
     "workbench.layoutControl.enabled": false,
     "claudeCode.focusView": true,
-    "workbench.colorTheme": "PyCharm Dark+ Theme",
-    "editor.fontSize": 16
+    "editor.fontSize": 18
 }

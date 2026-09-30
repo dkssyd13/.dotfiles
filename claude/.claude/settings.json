@@ -15,7 +15,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
+  "model": "opus",
   "skillOverrides": {
     "course-practice-problems": "off",
     "paper-scout": "off"
@@ -51,8 +51,8 @@
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": false,
-    "academic-research-skills@academic-research-skills": true,
-    "figma@claude-plugins-official": true,
+    "academic-research-skills@academic-research-skills": false,
+    "figma@claude-plugins-official": false,
     "i-have-adhd@i-have-adhd": true
   },
   "extraKnownMarketplaces": {
@@ -60,13 +60,15 @@
       "source": {
         "source": "github",
         "repo": "Imbad0202/academic-research-skills"
-      }
+      },
+      "autoUpdate": true
     },
     "i-have-adhd": {
       "source": {
         "source": "github",
         "repo": "ayghri/i-have-adhd"
-      }
+      },
+      "autoUpdate": true
     }
   },
   "language": "Korean",
@@ -95,15 +97,16 @@
       "effortLevel": "high"
     },
     "claude-opus-5-5": {
-      "effortLevel": "high"
+      "effortLevel": "xhigh"
     }
   },
   "tui": "fullscreen",
   "theme": "auto",
   "editorMode": "vim",
   "teammateMode": "tmux",
+  "remoteControlAtStartup": true,
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
-  "remoteControlAtStartup": true
+  "skipWorkflowUsageWarning": true
 }
