@@ -7,12 +7,14 @@ prefix = "ctrl+a"
 switch_tab = ["prefix+1..9", "alt+1..9"]
 switch_workspace = ["prefix+ctrl+1..9", "ctrl+1..9"]
 # focus_agent = "prefix+alt+1..9"
+navigate_workspace_up = ["k", "up"]
+navigate_workspace_down = ["j", "down"]
 
 [[keys.command]]
 key = "prefix+shift+c"
 type = "shell"
 command = "~/.config/herdr/new-tab-from-first-layout.sh"
-description = "New tab: Main workspace + AI agent"
+description = "New tab: Main workspace(75%) + AI agent(25%)"
 
 [[keys.command]]
 key = "prefix+shift+v"
@@ -21,13 +23,5 @@ command = "\"${HERDR_BIN_PATH}\" pane split \"${HERDR_ACTIVE_PANE_ID}\" --direct
 description = "Split pane: Main 75% + AI agent 25%"
 
 [theme]
-name = "tokyo-night"
+name = "catppuccin"
 auto_switch = false
-
-[[keys.command]]
-key = "prefix+shift+s"
-type = "popup"
-command = "~/.local/bin/herdr-sessionizer"
-description = "Sessionizer: switch herdr session"
-width = "70%"
-height = "70%"

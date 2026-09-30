@@ -6,7 +6,7 @@ dry_run=false
 backup_root="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles-backups/$(date +%Y%m%d-%H%M%S)"
 
 case "${OSTYPE:-}" in
-  darwin*) default_packages=(aerospace bin cursor ghostty ideavimrc nvim p10k tmux vimrc) ;;
+  darwin*) default_packages=(aerospace bin cursor ghostty herdr ideavimrc nvim p10k tmux vimrc) ;;
   linux*) default_packages=(bin claude cursor fcitx5 ghostty herdr hypr ideavimrc nvim p10k tmux vimrc) ;;
   *) default_packages=(bin ghostty ideavimrc nvim p10k tmux vimrc) ;;
 esac
