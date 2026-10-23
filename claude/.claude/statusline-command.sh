@@ -4,6 +4,9 @@ used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 model_full=$(echo "$input" | jq -r '.model.display_name // "Unknown Model"')
 # Shorten model name: "Claude Opus 4.6" -> "Opus 4.6"
 model_name="${model_full#Claude }"
+effort=$(echo "$input" | jq -r '.effort.level // empty')
+model_label="$model_name"
+[ -n "$effort" ] && model_label="${model_name} · ${effort}"
 cwd=$(echo "$input" | jq -r '.workspace.current_dir // .cwd // empty')
 ide_name=$(echo "$input" | jq -r '.ide.name // empty')
 # ANSI colors (using $'...' so variables contain actual escape characters)
@@ -67,7 +70,7 @@ folder_part=""
 if [ -n "$folder_name" ]; then
     folder_part=" 📁 ${folder_name}"
 fi
-printf '%s%s[%s]%s%s%s%s\n' "$BOLD" "$CYAN" "$model_name" "$RESET" "$folder_part" "$git_part" "${CYAN}${ide_part}${RESET}"
+printf '%s%s[%s]%s%s%s%s\n' "$BOLD" "$CYAN" "$model_label" "$RESET" "$folder_part" "$git_part" "${CYAN}${ide_part}${RESET}"
 # --- Line 2: Context usage progress bar ---
 if [ -n "$used_pct" ]; then
     used_int=$(printf "%.0f" "$used_pct")

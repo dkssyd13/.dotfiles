@@ -121,10 +121,11 @@ outer.right      = 5
     alt-shift-v = ['exec-and-forget open -a "Visual Studio Code.app"', 'mode main']
     alt-shift-p = ['exec-and-forget open -a "PyCharm.app"', 'mode main']
     alt-shift-f = ['exec-and-forget open -a "Finder"', 'mode main']
-    alt-shift-b = ['exec-and-forget open -a "Google Chrome"', 'mode main']
+    alt-shift-b = ['exec-and-forget open -a "Safari"', 'mode main']
     alt-shift-n = ['exec-and-forget open -a "Notion.app"', 'mode main']
     alt-shift-a = ['exec-and-forget open -a "Claude.app"', 'mode main']
-    alt-shift-g = ['exec-and-forget open -a "ChatGPT.app"', 'mode main']
+    alt-shift-g = ['exec-and-forget open -a "Goodnotes.app"', 'mode main']
+    alt-shift-o = ['exec-and-forget open -a "ChatGPT.app"', 'mode main']
     alt-shift-z = ['exec-and-forget open -a "ZenNotes.app"', 'mode main']
     alt-shift-m = ['exec-and-forget open -a "KakaoTalk.app"', 'mode main']
     # Launch Stickies and bring its notes to the workspace where the shortcut was pressed.

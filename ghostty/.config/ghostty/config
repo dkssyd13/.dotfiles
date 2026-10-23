@@ -3,7 +3,8 @@
 # - Linux + omarchy: 아래 config-file이 동적으로 덮어쓰기
 # - Linux + omarchy 없음: tokyo-night 폴백
 # theme = iterm2like
-theme = iTerm2 Default
+# theme = iTerm2 Default
+theme = Catppuccin Mocha
 config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 
 # Font
@@ -12,14 +13,14 @@ font-style = Regular
 font-size = 18
 
 # Window
-background = 000000
+# background = 000000
 window-theme = ghostty
 window-padding-x = 14
 window-padding-y = 14
 confirm-close-surface=false
 resize-overlay = never
 gtk-toolbar-style = flat
-background-opacity = 0.8
+background-opacity = 0.9
 background-blur = 90
 macos-titlebar-style = hidden
 # macOS: 왼쪽 Option은 터미널 Alt/Meta로 전달하고 오른쪽 Option은 특수문자 입력용으로 유지

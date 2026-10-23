@@ -10,8 +10,8 @@
       "Bash(rm -r *)",
       "Bash(sudo *)",
       "Bash(git push --force*)",
-      "Read(.env*)",
-      "Edit(.env*)"
+      "Read(.env)",
+      "Edit(.env)"
     ],
     "defaultMode": "auto"
   },
@@ -50,10 +50,10 @@
   },
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": false,
     "academic-research-skills@academic-research-skills": false,
     "figma@claude-plugins-official": false,
-    "i-have-adhd@i-have-adhd": true
+    "i-have-adhd@i-have-adhd": true,
+    "cowork-plugin-management@synced": false
   },
   "extraKnownMarketplaces": {
     "academic-research-skills": {
@@ -101,12 +101,12 @@
     }
   },
   "tui": "fullscreen",
+  "skipWorkflowUsageWarning": true,
   "theme": "auto",
   "editorMode": "vim",
   "teammateMode": "tmux",
   "remoteControlAtStartup": true,
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "skipWorkflowUsageWarning": true
+  "skipAutoPermissionPrompt": true
 }
