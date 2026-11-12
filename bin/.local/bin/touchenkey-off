@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Stop the TouchEn nxKey daemon and keep it off across reboots.
+# Its Intel-only daemon spawns ps/grep under Rosetta every second, which keeps ecosystemd busy.
+label=com.raon.touchen.nxkey
+
+sudo launchctl disable "system/$label"
+sudo launchctl bootout "system/$label" 2>/dev/null
+
+for _ in 1 2 3 4 5; do
+  pgrep -u root -f 'TouchEn nxKey/TEK_Daemon' >/dev/null || { echo "TouchEn nxKey off"; exit 0; }
+  sleep 1
+done
+echo "TouchEn nxKey is still running" >&2
+exit 1

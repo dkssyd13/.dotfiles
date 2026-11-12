@@ -9,6 +9,8 @@ config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 
 # Font
 font-family = "JetBrainsMono Nerd Font"
+font-family = "Apple SD Gothic Neo"
+font-thicken = true
 font-style = Regular
 font-size = 18
 

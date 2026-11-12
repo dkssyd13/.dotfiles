@@ -23,16 +23,6 @@
   "hooks": {
     "SessionStart": [
       {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session",
-            "timeout": 10
-          }
-        ]
-      },
-      {
         "matcher": "^(startup|resume|clear|compact|fork)$",
         "hooks": [
           {
@@ -49,7 +39,7 @@
     "command": "bash ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "context7@claude-plugins-official": true,
+    "context7@claude-plugins-official": false,
     "academic-research-skills@academic-research-skills": false,
     "figma@claude-plugins-official": false,
     "i-have-adhd@i-have-adhd": true,
@@ -89,15 +79,13 @@
     }
   },
   "effortLevel": "high",
+  "autoCompactWindow": 400000,
   "modelSettings": {
-    "claude-opus-5": {
-      "effortLevel": "xhigh"
+    "claude-opus-5-5": {
+      "effortLevel": "high"
     },
     "claude-fable-5-1": {
       "effortLevel": "high"
-    },
-    "claude-opus-5-5": {
-      "effortLevel": "xhigh"
     }
   },
   "tui": "fullscreen",

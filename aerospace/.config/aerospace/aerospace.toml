@@ -37,17 +37,17 @@ after-startup-command = [
     # Blue
     'exec-and-forget borders active_color=0xff89b4fa inactive_color=0xff494d64 width=8.0 blacklist="iPhone Mirroring"',
 
-    # Workspace 2 (terminals) uses a vertical accordion instead of the global 'tiles'
-    'layout --workspace 2 --root v_accordion'
+    # Workspace 4 (terminals) uses a vertical accordion instead of the global 'tiles'
+    'layout --workspace 4 --root v_accordion'
 ]
 
 [gaps]
 inner.horizontal = 10
 inner.vertical   = 10
-outer.left       = 5
-outer.bottom     = 5
-outer.top        = 5
-outer.right      = 5
+outer.left       = 10
+outer.bottom     = 10
+outer.top        = 10
+outer.right      = 10
 
 [mode.main.binding]
 
@@ -121,7 +121,7 @@ outer.right      = 5
     alt-shift-v = ['exec-and-forget open -a "Visual Studio Code.app"', 'mode main']
     alt-shift-p = ['exec-and-forget open -a "PyCharm.app"', 'mode main']
     alt-shift-f = ['exec-and-forget open -a "Finder"', 'mode main']
-    alt-shift-b = ['exec-and-forget open -a "Safari"', 'mode main']
+    alt-shift-b = ['exec-and-forget open -a "Google Chrome"', 'mode main']
     alt-shift-n = ['exec-and-forget open -a "Notion.app"', 'mode main']
     alt-shift-a = ['exec-and-forget open -a "Claude.app"', 'mode main']
     alt-shift-g = ['exec-and-forget open -a "Goodnotes.app"', 'mode main']
@@ -211,14 +211,22 @@ run = 'move-node-to-workspace 1'
 if.app-id = 'app.zen-browser.zen'
 run = 'move-node-to-workspace 1'
 
-# Terminal to workspace 2
+# AI's to workspace 2
 [[on-window-detected]]
-if.app-id = 'com.googlecode.iterm2'
-run = ['move-node-to-workspace 2', 'layout --workspace 2 --root v_accordion']
+if.app-id = 'com.anthropic.claudefordesktop'
+run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
-if.app-id =  'com.mitchellh.ghostty'
-run = ['move-node-to-workspace 2', 'layout --workspace 2 --root v_accordion']
+if.app-id = 'com.openai.chat'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.openai.codex'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.t3tools.t3code'
+run = 'move-node-to-workspace 2'
 
 # Dev : IDE's to workspace 3
 [[on-window-detected]]
@@ -245,30 +253,26 @@ run = ['layout floating', 'move-node-to-workspace 3']
 if.app-id = 'com.apple.dt.Xcode'
 run = 'move-node-to-workspace 3'
 
-# Notes to workspace 4
+# Terminal to workspace 4
+[[on-window-detected]]
+if.app-id = 'com.googlecode.iterm2'
+run = ['move-node-to-workspace 4', 'layout --workspace 4 --root v_accordion']
+
+[[on-window-detected]]
+if.app-id =  'com.mitchellh.ghostty'
+run = ['move-node-to-workspace 4', 'layout --workspace 4 --root v_accordion']
+
+# Notes to workspace 5
 [[on-window-detected]]
 if.app-id = 'notion.id'
-run = 'move-node-to-workspace 4'
+run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = 'com.goodnotesapp.x'
-run = 'move-node-to-workspace 4'
+run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = 'com.adibhanna.zennotes'
-run = 'move-node-to-workspace 4'
-
-# AI's to workspace 5
-[[on-window-detected]]
-if.app-id = 'com.anthropic.claudefordesktop'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'com.openai.chat'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'com.openai.codex'
 run = 'move-node-to-workspace 5'
 
 # Finder to workspace 6

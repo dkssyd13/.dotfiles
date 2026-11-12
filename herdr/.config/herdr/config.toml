@@ -1,6 +1,6 @@
 onboarding = false
 [ui.toast]
-delivery = "terminal"
+delivery = "system"
 
 [keys]
 prefix = "ctrl+a"
