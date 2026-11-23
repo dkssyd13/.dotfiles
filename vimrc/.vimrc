@@ -28,11 +28,14 @@ nnoremap <leader>q :lopen<CR>
 nnoremap [d :cprev<CR>
 nnoremap ]d :cnext<CR>
 
-" Yank highlighting (only works in Vim 8.0.1394+)
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-augroup END
+" Yank highlighting (Neovim only; vscodevim and IdeaVim use their own
+" highlightedyank settings, and the Neovim config replaces this group)
+if has('nvim')
+    augroup highlight_yank
+        autocmd!
+        autocmd TextYankPost * silent! lua vim.hl.on_yank()
+    augroup END
+endif
 
 " Keep cursor centered while joining lines
 nnoremap J mzJ`z

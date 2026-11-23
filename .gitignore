@@ -5,3 +5,6 @@ herdr/.config/herdr/*
 
 # Claude Code synced skills — auto-downloaded from claude.ai, not managed here
 claude/.claude/skills/synced/
+
+# Neovim on Omarchy: symlink to the current Omarchy theme, created at startup
+nvim/.config/nvim/lua/plugins/theme.lua

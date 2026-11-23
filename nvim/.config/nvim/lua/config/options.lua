@@ -1,45 +1,61 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
+local opt = vim.opt
 
--- LSP
--- vim.g.lazyvim_python_lsp = "basedpyright"
-vim.g.lazyvim_python_lsp = "pyrefly"
-vim.g.autoformat = false
+-- Look
+opt.guicursor = ""
+opt.number = true
+opt.relativenumber = true
+opt.termguicolors = true
+opt.signcolumn = "yes"
+opt.colorcolumn = "80,120" -- VS Code rulers
+opt.cursorline = true
+opt.laststatus = 3
+opt.showmode = false -- the statusline shows the mode
 
--- Vim
-vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#FF6B00" })
-vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#FF6B00" })
-vim.opt.guicursor = ""
+-- Indentation: 4 spaces (C/C++ use 2, see autocmds.lua)
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.smartindent = true
 
-vim.opt.nu = true
-vim.opt.relativenumber = true
+-- Wrapping like VS Code "editor.wordWrap": "on"
+opt.wrap = true
+opt.linebreak = true
+opt.breakindent = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+opt.scrolloff = 8
+opt.isfname:append("@-@")
 
-vim.opt.smartindent = true
+-- Files and undo (undodir is shared with the old config, so history is kept)
+opt.swapfile = false
+opt.backup = false
+opt.undofile = true
+opt.undodir = vim.env.HOME .. "/.vim/undodir"
+opt.undolevels = 10000
+opt.confirm = true
 
-vim.opt.wrap = false
+-- Search
+opt.hlsearch = false
+opt.incsearch = true
+opt.ignorecase = true
+opt.smartcase = true
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
+opt.updatetime = 50
+opt.clipboard = "" -- system clipboard only through <leader>y / <leader>Y
+opt.splitright = true
+opt.splitbelow = true
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+-- Folding: nothing is folded on open; treesitter folds where available
+opt.foldlevel = 99
+opt.foldmethod = "indent"
+opt.foldtext = ""
 
-vim.opt.termguicolors = true
+-- Snacks: no animations
+vim.g.snacks_animate = false
 
-vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
-
-vim.opt.updatetime = 50
-
-vim.opt.colorcolumn = "80"
-
-vim.opt.clipboard = ""
+-- No remote-plugin providers. Without this, every Python buffer pays ~40 ms
+-- for the python3 provider probe started by ftplugin/python.vim.
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0

@@ -60,3 +60,17 @@ On Omarchy, installing the `fcitx5` dotfiles package also installs
 `fcitx5-hangul` with `omarchy pkg add`; its `libhangul` dependency is installed
 automatically. The included Fcitx profile enables US and Hangul input; use
 Right Alt to switch.
+
+## Neovim
+
+The `nvim` package is a hand-written lazy.nvim config (no LazyVim). The first
+start clones the plugins and installs the Mason tools in the background
+(pyrefly, ruff, marksman, taplo, lua-language-server, json-lsp, debugpy,
+stylua, markdownlint-cli2); `:Lazy` and `:Mason` show progress.
+
+On Omarchy, Neovim creates `~/.config/nvim/lua/plugins/theme.lua` at startup
+as a symlink to the current Omarchy theme
+(`~/.local/state/omarchy/current/theme/neovim.lua`, or the Omarchy 3 path).
+lazy.nvim watches that file, so `omarchy theme set` reloads the colorscheme in
+running editors. The link is machine-local and ignored by git. On macOS the
+theme is catppuccin macchiato with a transparent background.

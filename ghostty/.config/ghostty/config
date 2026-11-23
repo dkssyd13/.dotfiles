@@ -5,7 +5,9 @@
 # theme = iterm2like
 # theme = iTerm2 Default
 theme = Catppuccin Mocha
+# Omarchy 3 path, then Omarchy 4 (the later include wins if both exist)
 config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
+config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"
 
 # Font
 font-family = "JetBrainsMono Nerd Font"

@@ -1,6 +1,16 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
+  ft = "markdown",
   opts = {
+    -- code/checkbox as LazyVim's markdown extra had them
+    code = {
+      sign = false,
+      width = "block",
+      right_pad = 1,
+    },
+    checkbox = {
+      enabled = false,
+    },
     html = {
       comment = {
         conceal = false,

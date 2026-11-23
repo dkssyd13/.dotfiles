@@ -1,117 +1,45 @@
+-- Mason only installs tools and puts them on PATH; servers are enabled
+-- explicitly in config/lsp.lua (no mason-lspconfig auto-enable).
+local mason_packages = {
+  "pyrefly",
+  "ruff",
+  "marksman",
+  "taplo",
+  "lua-language-server",
+  "json-lsp",
+  "debugpy",
+  "stylua",
+  "markdownlint-cli2",
+}
+
 return {
-  "neovim/nvim-lspconfig",
-  opts = {
-    inlay_hints = {
-      enabled = true,
-    },
-    diagnostics = {
-      virtual_text = false,
-    },
-    servers = {
-      ["*"] = {
-        keys = {
-          { "<leader>rn", vim.lsp.buf.rename, desc = "Rename", has = "rename" },
-        },
-      },
-      ruff = {
-        configurationPreference = "filesystemFirst",
-        lineLength = 120,
-
-        lint = {
-          select = {
-            "E",
-            "W",
-            "F",
-            "I",
-            "B",
-            "UP",
-            "C4",
-            "RUF100",
-          },
-
-          ignore = {
-            "E501",
-            "E731",
-            "E741",
-          },
-        },
-        keys = {
-          {
-            "<leader>oi",
-            LazyVim.lsp.action["source.organizeImports"],
-            desc = "Organize Imports",
-          },
-        },
-        init_options = {
-          settings = {
-            lint = {
-              -- ignore = { "F403", "F405" },
-            },
-          },
-        },
-      },
-      pyrefly = {},
-      -- basedpyright = {
-      --   settings = {
-      --     basedpyright = {
-      --       analysis = {
-      --         disableOrganizeImports = true,
-      --         typeCheckingMode = "off",
-      --         autoSearchPaths = true,
-      --         useLibraryCodeForTypes = true,
-      --         diagnosticMode = "workspace",
-      --         autoImportCompletions = true,
-      --         diagnosticSeverityOverrides = {
-      --           -- basic 모드에서도 켜져 있어 끄는 의미가 있는 항목 (유지)
-      --           -- reportUnusedImport = "none", -- basic 기본값: hint
-      --           -- reportUnusedVariable = "none", -- basic 기본값: hint
-      --           -- reportWildcardImportFromLibrary = "none", -- basic 기본값: warning
-      --           -- 아래는 basic 모드에서 이미 none이라 불필요 (recommended 모드 잔소리용이었음)
-      --           -- reportDuplicateImport = "none",
-      --           -- reportImplicitStringConcatenation = false,
-      --           -- reportUnknownMemberType = false,
-      --           -- reportUnknownVariableType = false,
-      --           -- reportUnknownParameterType = false,
-      --           -- reportUnknownArgumentType = false,
-      --           -- reportMissingTypeStubs = "none",
-      --           -- reportAny = false,
-      --           -- reportMissingParameterType = false,
-      --           -- reportUnusedCallResult = false,
-      --           -- reportUnknownLambdaType = false,
-      --         },
-      --         inlayHints = {
-      --           callArgumentNames = true,
-      --           functionReturnTypes = true,
-      --           variableTypes = true,
-      --           genericTypes = false,
-      --         },
-      --       },
-      --     },
-      --   },
-      -- },
-      sourcekit = {
-        cmd = {
-          "sourcekit-lsp",
-        },
-        filetypes = { "swift", "objective-c", "objective-cpp" },
-        root_dir = require("lspconfig.util").root_pattern("Package.swift", ".git", "compile_commands.json"),
-      },
-    },
+  {
+    "mason-org/mason.nvim",
+    cmd = "Mason",
+    build = ":MasonUpdate",
+    opts = {},
+    config = function(_, opts)
+      require("mason").setup(opts)
+      -- install anything missing, after startup
+      vim.defer_fn(function()
+        local registry = require("mason-registry")
+        registry.refresh(function()
+          for _, name in ipairs(mason_packages) do
+            local ok, pkg = pcall(registry.get_package, name)
+            if ok and not pkg:is_installed() and not pkg:is_installing() then
+              pkg:install()
+            end
+          end
+        end)
+      end, 500)
+    end,
   },
-  setup = {
-    -- basedpyright = function()
-    --   local util = require("lspconfig.util")
-    --
-    --   require("lspconfig").basedpyright.setup({
-    --     root_dir = function(fname)
-    --       -- 기본 패턴으로 찾기 시도
-    --       local root = util.root_pattern("pyrightconfig.json", "pyproject.toml", "setup.py", ".git")(fname)
-    --
-    --       -- 못 찾으면 현재 디렉토리
-    --       return root or vim.fn.getcwd()
-    --     end,
-    --   })
-    --   return true -- 이 부분이 중요!
-    -- end,
+  {
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = { "mason-org/mason.nvim", "saghen/blink.cmp" },
+    config = function()
+      require("config.lsp").setup()
+    end,
   },
 }
