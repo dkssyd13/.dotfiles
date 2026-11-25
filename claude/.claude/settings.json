@@ -15,7 +15,7 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus",
+  "model": "opus[1m]",
   "skillOverrides": {
     "course-practice-problems": "off",
     "paper-scout": "off"
@@ -79,7 +79,6 @@
     }
   },
   "effortLevel": "high",
-  "autoCompactWindow": 400000,
   "modelSettings": {
     "claude-opus-5-5": {
       "effortLevel": "high"
@@ -88,6 +87,7 @@
       "effortLevel": "high"
     }
   },
+  "autoCompactWindow": 400000,
   "tui": "fullscreen",
   "skipWorkflowUsageWarning": true,
   "theme": "auto",
