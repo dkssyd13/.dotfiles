@@ -23,5 +23,6 @@ command = "\"${HERDR_BIN_PATH}\" pane split \"${HERDR_ACTIVE_PANE_ID}\" --direct
 description = "Split pane: Main 75% + AI agent 25%"
 
 [theme]
-name = "catppuccin"
-auto_switch = false
+# Use the terminal's own palette: follows the Omarchy theme through Ghostty on
+# Linux, and Ghostty's theme (Catppuccin Mocha) on macOS.
+name = "terminal"

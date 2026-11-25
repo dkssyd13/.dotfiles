@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Runs after `omarchy font set <font>` (Omarchy only; never on macOS).
+#
+# omarchy-font-set rewrites ~/.config/ghostty/config with `sed -i`, which
+# replaces the stow symlink with a plain copy, and it only edits a font-family
+# line there, while this setup keeps the font in os/linux.conf. So:
+#   1. put the stow symlink back (the repo copy stays the source of truth)
+#   2. write the chosen font as the primary font-family in os/linux.conf
+set -euo pipefail
+
+font_name="${1:?font name required}"
+
+# This hook is itself a stow link into the dotfiles repo; find the repo from it.
+hook_path=$(readlink -f -- "${BASH_SOURCE[0]}")
+repo_dir=${hook_path%/hypr/.config/omarchy/hooks/font-set.d/*}
+[[ -d $repo_dir/ghostty ]] || { echo "dotfiles repo not found from $hook_path" >&2; exit 1; }
+
+# 1. Restore the stow link if font-set replaced it with a regular file.
+ghostty_config="$HOME/.config/ghostty/config"
+if [[ -f $ghostty_config && ! -L $ghostty_config ]]; then
+  rm -- "$ghostty_config"
+  stow --no-folding -d "$repo_dir" -t "$HOME" ghostty
+fi
+
+# 2. Replace the first font-family line (keep the Korean fallback after it).
+linux_conf="$repo_dir/ghostty/.config/ghostty/os/linux.conf"
+tmp=$(mktemp "$linux_conf.XXXXXX")
+awk -v font="$font_name" '
+  !done && /^font-family[[:space:]]*=/ { print "font-family = \"" font "\""; done = 1; next }
+  { print }
+' "$linux_conf" >"$tmp"
+cat "$tmp" >"$linux_conf"
+rm -f -- "$tmp"
+
+pkill -SIGUSR2 ghostty 2>/dev/null || true
