@@ -9,12 +9,8 @@ theme = Catppuccin Mocha
 config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
 config-file = ?"~/.local/state/omarchy/current/theme/ghostty.conf"
 
-# Font
-font-family = "JetBrainsMono Nerd Font"
-font-family = "Apple SD Gothic Neo"
-font-thicken = true
+# Font (family and size are per-OS, see os/*.conf)
 font-style = Regular
-font-size = 18
 
 # Window
 # background = 000000
@@ -24,11 +20,6 @@ window-padding-y = 14
 confirm-close-surface=false
 resize-overlay = never
 gtk-toolbar-style = flat
-background-opacity = 0.9
-background-blur = 90
-macos-titlebar-style = hidden
-# macOS: 왼쪽 Option은 터미널 Alt/Meta로 전달하고 오른쪽 Option은 특수문자 입력용으로 유지
-macos-option-as-alt = left
 
 # Cursor styling
 cursor-style = "block"
@@ -38,30 +29,6 @@ cursor-style-blink = false
 # (all shell integration options must be passed together)
 shell-integration-features = no-cursor,ssh-env
 
-# macOS: Cmd+숫자 → ESC+숫자(M-숫자) 전송 → tmux window 전환
-# (Linux/omarchy에선 Super+숫자를 Hyprland가 워크스페이스 전환에 먼저 가로채므로 무영향)
-keybind = super+physical:one=text:\x1b1
-keybind = super+one=text:\x1b1
-keybind = super+physical:two=text:\x1b2
-keybind = super+two=text:\x1b2
-keybind = super+physical:three=text:\x1b3
-keybind = super+three=text:\x1b3
-keybind = super+physical:four=text:\x1b4
-keybind = super+four=text:\x1b4
-keybind = super+physical:five=text:\x1b5
-keybind = super+five=text:\x1b5
-keybind = super+physical:six=text:\x1b6
-keybind = super+six=text:\x1b6
-keybind = super+physical:seven=text:\x1b7
-keybind = super+seven=text:\x1b7
-keybind = super+physical:eight=text:\x1b8
-keybind = super+eight=text:\x1b8
-keybind = super+physical:nine=text:\x1b9
-keybind = super+nine=text:\x1b9
-
-# macOS: Cmd+B → ESC+b(Alt/Meta+B) 전송
-keybind = super+b=esc:b
-
 # Copy selected text to the system clipboard
 copy-on-select = clipboard
 
@@ -70,3 +37,9 @@ mouse-scroll-multiplier = 0.95
 
 # Fix general slowness on hyprland (https://github.com/ghostty-org/ghostty/discussions/3224)
 async-backend = epoll
+
+# OS-specific settings. os/current.conf is a per-machine link to os/macos.conf or os/linux.conf.
+config-file = ?"os/current.conf"
+
+# Machine-specific overrides (e.g. font-size for this monitor). Untracked; loaded last so it wins.
+config-file = ?"local.conf"
