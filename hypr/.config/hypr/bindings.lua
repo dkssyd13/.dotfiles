@@ -86,3 +86,6 @@ o.rebind("SUPER + SHIFT + V", "VS Code", { launch = "code", focus = "^(Code|code
 o.rebind("SUPER + SHIFT + P", "PyCharm", { launch = "pycharm", focus = "^jetbrains-pycharm.*$" })
 o.rebind("SUPER + SHIFT + I", "IntelliJ IDEA", { launch = "idea", focus = "^jetbrains-idea.*$" })
 o.rebind("SUPER + SHIFT + Z", "ZenNotes", { launch = "zennotes", focus = "^(ZenNotes|zennotes)$" })
+
+-- Screenshot on Super+Shift+S (was: Google Maps web app). Same action as PRINT.
+o.rebind("SUPER + SHIFT + S", "Screenshot", "omarchy-capture-screenshot")
