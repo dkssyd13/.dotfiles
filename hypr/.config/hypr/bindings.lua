@@ -7,6 +7,11 @@ local function send_shortcut(mods, key)
   end
 end
 
+-- Alt+Space opens the Omarchy menu and Right Alt is the Hangul key, so drop
+-- Omarchy's dictation bindings on those keys (Superwhisper toggle/push-to-talk).
+hl.unbind("ALT + SPACE")
+hl.unbind("ALT + Alt_R")
+
 -- macOS-like application shortcuts (Alt acts like Command).
 o.bind("ALT + SPACE", "Omarchy menu", "omarchy-menu toggle")
 o.bind("ALT + Q", "Close window", hl.dsp.window.close())
@@ -51,11 +56,33 @@ o.bind("SUPER + SHIFT + SPACE", "Toggle floating", hl.dsp.window.float({ action 
 o.bind("SUPER + code:20", "Resize smaller", hl.dsp.window.resize({ x = -50, y = 0, relative = true }))
 o.bind("SUPER + code:21", "Resize larger", hl.dsp.window.resize({ x = 50, y = 0, relative = true }))
 o.bind("SUPER + TAB", "Previous workspace", hl.dsp.focus({ workspace = "previous" }))
-o.bind("SUPER + code:49", "Switch to workspace 0", hl.dsp.focus({ workspace = "0" }))
-o.bind("SUPER + SHIFT + code:49", "Move window to workspace 0", hl.dsp.window.move({ workspace = "0" }))
 o.bind("SUPER + BACKSPACE", "Delete word backward", send_shortcut("CTRL", "BACKSPACE"))
 
 -- Keep the existing Omarchy launch bindings; customize the terminal shortcut.
 hl.unbind("SUPER + RETURN")
 hl.unbind("SUPER + SHIFT + RETURN")
 o.bind("SUPER + SHIFT + RETURN", "Terminal", { omarchy = "terminal" })
+
+-- AeroSpace: alt-shift-[ / ] moves the workspace to the previous/next monitor.
+o.bind("SUPER + SHIFT + bracketleft", "Move workspace to left monitor", o.workspaces.move_to_monitor("l"))
+o.bind("SUPER + SHIFT + bracketright", "Move workspace to right monitor", o.workspaces.move_to_monitor("r"))
+
+-- AeroSpace: alt-` / alt-shift-` is workspace 0. Omarchy's per-monitor slots are
+-- 1-10, so workspace 0 is a named workspace. This replaces the Quake console keys.
+hl.unbind("SUPER + grave")
+hl.unbind("SUPER + SHIFT + grave")
+o.bind("SUPER + grave", "Switch to workspace 0", hl.dsp.focus({ workspace = "name:0" }))
+o.bind("SUPER + SHIFT + grave", "Move window to workspace 0", hl.dsp.window.move({ workspace = "name:0" }))
+
+-- AeroSpace app launchers (alt-shift-<key> on macOS). Focus the app if it's
+-- already open, otherwise launch it. B (browser), F (files) and Return
+-- (terminal) already match Omarchy's defaults.
+o.rebind("SUPER + SHIFT + N", "Notion", { webapp = "https://www.notion.so", focus = true })
+o.rebind("SUPER + SHIFT + A", "Claude", { webapp = "https://claude.ai", focus = true })
+o.rebind("SUPER + SHIFT + O", "ChatGPT", { webapp = "https://chatgpt.com", focus = true })
+o.rebind("SUPER + SHIFT + G", "Goodnotes", { webapp = "https://web.goodnotes.com", focus = true })
+o.rebind("SUPER + SHIFT + C", "Cursor", { launch = "cursor", focus = "^(Cursor|cursor)$" })
+o.rebind("SUPER + SHIFT + V", "VS Code", { launch = "code", focus = "^(Code|code)$" })
+o.rebind("SUPER + SHIFT + P", "PyCharm", { launch = "pycharm", focus = "^jetbrains-pycharm.*$" })
+o.rebind("SUPER + SHIFT + I", "IntelliJ IDEA", { launch = "idea", focus = "^jetbrains-idea.*$" })
+o.rebind("SUPER + SHIFT + Z", "ZenNotes", { launch = "zennotes", focus = "^(ZenNotes|zennotes)$" })

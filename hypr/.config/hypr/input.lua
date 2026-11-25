@@ -1,7 +1,9 @@
 hl.config({
   input = {
     kb_layout = "us",
-    kb_options = "caps:swapescape,korean:ralt_hangul",
+    -- No caps:swapescape: the Rainy 75 already swaps Caps Lock and Esc in its
+    -- firmware (VIA), so swapping here too would cancel it out.
+    kb_options = "korean:ralt_hangul",
     sensitivity = 0.7,
     repeat_rate = 40,
     repeat_delay = 250,
