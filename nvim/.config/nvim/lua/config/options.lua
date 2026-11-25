@@ -42,6 +42,59 @@ opt.smartcase = true
 
 opt.updatetime = 50
 opt.clipboard = "" -- system clipboard only through <leader>y / <leader>Y
+
+-- Over SSH or inside herdr, "+ yanks also go to the terminal in front of you
+-- through OSC 52 (herdr forwards it). Otherwise <leader>y on a remote Mac only
+-- reaches that Mac's pbcopy clipboard. Paste never asks the terminal over OSC 52
+-- (it prompts or hangs): over SSH it returns the last yank, so paste text from
+-- the local machine with the terminal's own paste key.
+do
+  local in_ssh = vim.env.SSH_TTY ~= nil or vim.env.SSH_CONNECTION ~= nil
+  local ok, osc52 = pcall(require, "vim.ui.clipboard.osc52")
+  if ok and (in_ssh or vim.env.HERDR_PANE_ID ~= nil) then
+    local native
+    if vim.fn.has("mac") == 1 then
+      native = { copy = { "pbcopy" }, paste = { "pbpaste" } }
+    elseif vim.env.WAYLAND_DISPLAY and vim.fn.executable("wl-copy") == 1 then
+      native = { copy = { "wl-copy", "--type", "text/plain" }, paste = { "wl-paste", "--no-newline" } }
+    end
+    local use_native = native ~= nil and not in_ssh
+    local last = {}
+
+    local function copy(reg)
+      local emit = osc52.copy(reg)
+      return function(lines, regtype)
+        last[reg] = { vim.deepcopy(lines), regtype }
+        emit(lines)
+        if use_native then
+          vim.fn.system(native.copy, lines)
+        end
+      end
+    end
+
+    local function paste(reg)
+      return function()
+        if use_native then
+          local lines = vim.fn.systemlist(native.paste, "", 1)
+          if vim.v.shell_error == 0 then
+            if last[reg] and vim.deep_equal(lines, last[reg][1]) then
+              return vim.deepcopy(last[reg])
+            end
+            return lines
+          end
+        end
+        return vim.deepcopy(last[reg] or { {}, "v" })
+      end
+    end
+
+    vim.g.clipboard = {
+      name = "osc52",
+      copy = { ["+"] = copy("+"), ["*"] = copy("*") },
+      paste = { ["+"] = paste("+"), ["*"] = paste("*") },
+      cache_enabled = 0,
+    }
+  end
+end
 opt.splitright = true
 opt.splitbelow = true
 
