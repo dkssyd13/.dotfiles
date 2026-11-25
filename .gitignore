@@ -8,3 +8,8 @@ claude/.claude/skills/synced/
 
 # Neovim on Omarchy: symlink to the current Omarchy theme, created at startup
 nvim/.config/nvim/lua/plugins/theme.lua
+# Machine-specific Hyprland monitor layout
+hypr/.config/hypr/monitors_local.lua
+
+# macOS Finder metadata
+.DS_Store

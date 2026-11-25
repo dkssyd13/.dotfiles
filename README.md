@@ -1,26 +1,45 @@
 # Dotfiles
 
-Portable personal configuration for macOS and Omarchy. Packages mirror paths
-under `$HOME`; `install.sh` creates symlinks and backs up conflicting files.
+Portable personal configuration for macOS and Omarchy, managed with
+[GNU Stow](https://www.gnu.org/software/stow/). Each top-level directory is a
+package whose contents mirror paths under `$HOME`.
 
 ## New machine
 
 ```bash
 git clone <this-repository-url> ~/.dotfiles
 cd ~/.dotfiles
-./install.sh --dry-run
-./install.sh
+stow --no-folding -t ~ ghostty nvim tmux vimrc herdr claude   # pick packages
 ```
 
-The default package set is chosen for macOS or Linux. To install selected
-packages, pass their directory names, for example:
+On Omarchy, check `AGENTS.md` first: it lists the Omarchy version these
+dotfiles were last verified with and the integration points to recheck after
+an Omarchy update.
 
-```bash
-./install.sh ghostty nvim tmux
-```
+Use `stow -n -v ...` for a dry run and `stow -D ...` to unlink a package.
+`--no-folding` links individual files instead of whole directories, so
+machine-local files never end up inside the repository. Stow refuses to
+overwrite existing files; move them aside first.
 
-The defaults install the tracked Herdr configuration on both macOS and Linux,
-and the tracked Claude configuration on Linux. Runtime files such as Herdr
+Typical packages: macOS `aerospace bin cursor ghostty herdr ideavimrc nvim p10k
+tmux vimrc`; Linux `bin claude cursor fcitx5 ghostty herdr hypr ideavimrc nvim
+p10k tmux vimrc`.
+
+### Extra steps
+
+- **ghostty**: link the OS-specific config, which is not tracked:
+  `ln -sfn linux.conf ~/.config/ghostty/os/current.conf` (or `macos.conf`).
+  Machine-specific settings such as `font-size` go in an untracked
+  `~/.config/ghostty/local.conf`, which is loaded last.
+- **fcitx5** (Omarchy): `omarchy pkg add fcitx5-hangul`.
+- **cursor**: the package targets Cursor's config dir, not `$HOME`:
+  `stow --no-folding --ignore='extensions.txt|local-keys.sed' -t ~/.config/Cursor cursor`
+  (macOS: `-t ~/Library/Application\ Support/Cursor`). Then register the git
+  filter: `git config filter.cursor-local.clean 'sed -f cursor/local-keys.sed'`,
+  and install extensions with
+  `xargs -n1 cursor --install-extension < cursor/extensions.txt`.
+
+The Herdr package tracks only its configuration. Runtime files such as Herdr
 sessions, logs, and plugin locks are not tracked and remain machine-local.
 Claude Code downloads skills from the claude.ai account into
 `~/.claude/skills/synced/`; that directory is not tracked either.
@@ -42,12 +61,9 @@ cursor --list-extensions | sort > ~/.dotfiles/cursor/extensions.txt
 
 Machine-local Cursor settings (Remote-SSH host platforms, window zoom) stay on
 disk but are stripped from commits by a git clean filter. The keys are listed
-in `cursor/local-keys.sed`; `install.sh cursor` registers the filter in this
-clone. If `git status` shows `settings.json` as modified while `git diff` is
+in `cursor/local-keys.sed`; the `git config` step above registers the filter
+in this clone. If `git status` shows `settings.json` as modified while `git diff` is
 empty, only local keys changed; `git add` clears it.
-
-Use `--all` only when you really want packages for every operating system.
-Conflicting files are moved to `~/.local/state/dotfiles-backups/<timestamp>/`.
 
 After installation on Omarchy, reload Hyprland and check the configuration:
 
