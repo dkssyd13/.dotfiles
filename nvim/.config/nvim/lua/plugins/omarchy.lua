@@ -1,14 +1,16 @@
--- Omarchy (Linux) only: every theme plugin Omarchy may select, so theme
--- switches never need a download. Synced with omarchy-nvim's all-themes.lua
--- and Omarchy 4's default/themed/neovim.lua.tpl. See config/omarchy.lua.
-if not require("config.omarchy").enabled() then
-  return {}
-end
-
+-- Every theme plugin Omarchy may select, so theme switches never need a
+-- download. Synced with omarchy-nvim's all-themes.lua and Omarchy 4's
+-- default/themed/neovim.lua.tpl. See config/omarchy.lua.
+--
+-- Declared on every OS, not only Omarchy, so macOS and Linux share one plugin
+-- set and lazy-lock.json stays identical. All are lazy: on macOS they are
+-- installed but never loaded.
 local themes = {
   { "ribru17/bamboo.nvim" },
   -- name and branch must match Omarchy 4's generated theme spec
   { "omacom/aether.nvim", branch = "v3", name = "aether" },
+  -- the stock hackerman theme depends on this URL (plugin name "aether.nvim")
+  { "bjarneo/aether.nvim" },
   { "bjarneo/ethereal.nvim" },
   { "bjarneo/hackerman.nvim" },
   { "bjarneo/vantablack.nvim" },
